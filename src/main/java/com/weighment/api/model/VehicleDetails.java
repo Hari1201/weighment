@@ -1,6 +1,7 @@
 
 package com.weighment.api.model;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class VehicleDetails {
@@ -8,6 +9,16 @@ public class VehicleDetails {
 	private String vehicleNumber;
 
 	private String vehicleName;
+	
+    private BigDecimal    tareWeight  ;
+
+	public BigDecimal getTareWeight() {
+		return tareWeight;
+	}
+
+	public void setTareWeight(BigDecimal tareWeight) {
+		this.tareWeight = tareWeight;
+	}
 
 	private Date createdDate;
 

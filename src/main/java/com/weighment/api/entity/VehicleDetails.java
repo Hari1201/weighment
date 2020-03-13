@@ -2,6 +2,7 @@
 package com.weighment.api.entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.*;
@@ -21,8 +22,11 @@ public class VehicleDetails implements Serializable
 
     @Column(name="vehicle_name", length=50)
     private String     vehicleName  ;
+    
+    @Column(name="tare_weight", length=50)
+    private BigDecimal    tareWeight  ;
 
-    @Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.TIMESTAMP)
     @Column(name="created_date", nullable=false)
     private Date       createdDate  ;
 
@@ -37,7 +41,15 @@ public class VehicleDetails implements Serializable
     {
         this.vechileId = vechileId ;
     }
-    public Long getVechileId()
+
+	public BigDecimal getTareWeight() {
+		return tareWeight;
+	}
+
+	public void setTareWeight(BigDecimal tareWeight) {
+		this.tareWeight = tareWeight;
+	}
+	public Long getVechileId()
     {
         return this.vechileId;
     }
