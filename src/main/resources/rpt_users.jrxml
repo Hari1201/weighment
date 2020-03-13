@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.0.final using JasperReports Library version 6.12.1-ac0eebdb29e4c0985457bab279a6db744d661530  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="226" pageHeight="615" columnWidth="186" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="452b637e-0bfd-4a73-90d4-87fdf46f1702">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (3)"/>
+	<queryString language="SQL">
+		<![CDATA[select * from user]]>
+	</queryString>
+	<field name="user_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="user_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="user"/>
+	</field>
+	<field name="user_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="user_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="user"/>
+	</field>
+	<field name="email" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="email"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="user"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="160" splitType="Stretch">
+			<staticText>
+				<reportElement x="29" y="20" width="120" height="19" forecolor="#0000FF" uuid="88df94f0-a86e-438c-a753-92341c094d9f">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<text><![CDATA[WEIGHMENT CHALLEN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-20" y="50" width="100" height="18" forecolor="#0033FF" uuid="7326f41c-ce53-44cc-8bc4-28f5ff4bbdc8"/>
+				<text><![CDATA[No : 198]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="90" y="52" width="100" height="15" forecolor="#0033FF" uuid="6a78c05c-31aa-4dc8-b531-f4f6c38cf368"/>
+				<text><![CDATA[Date : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="90" y="68" width="100" height="20" forecolor="#0033FF" uuid="46941b80-82fc-4c92-bfca-32793a905144"/>
+				<text><![CDATA[Time : ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-20" y="90" width="209" height="1" forecolor="#0033FF" uuid="42dae803-eeba-49ba-a78e-09886c7ef08b"/>
+			</line>
+			<staticText>
+				<reportElement x="-20" y="110" width="195" height="20" forecolor="#0033FF" uuid="aaa2f966-ecf1-4992-8f74-e31493302b62"/>
+				<text><![CDATA[Vehicle       :   TN11U8663]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-20" y="140" width="120" height="20" forecolor="#0033FF" uuid="2fc56195-cd46-434c-940d-388a9d127ef4"/>
+				<text><![CDATA[Customer   :  JKS]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="120" y="53" width="79" height="13" forecolor="#0033FF" uuid="4addc414-3028-4220-82e8-f94dda7517e3"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm a">
+				<reportElement x="120" y="68" width="64" height="20" forecolor="#0033FF" uuid="f65f48b7-38c1-401a-97c2-5fc54e04ca64"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="-20" y="10" width="130" height="20" forecolor="#0033FF" uuid="08ce5dde-597f-4a54-95c7-c6e914166d05"/>
+				<text><![CDATA[Product      : W/MSAND]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="96" splitType="Stretch">
+			<line>
+				<reportElement x="-20" y="10" width="209" height="1" forecolor="#0033FF" uuid="ff5ceedb-a22f-469e-83e0-c38b9a8086de"/>
+			</line>
+			<staticText>
+				<reportElement x="-20" y="20" width="100" height="20" forecolor="#0033FF" uuid="16b42445-b05b-4701-9743-ca0a7d7d29b8"/>
+				<text><![CDATA[GROSS Wt.  13500]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy/HH:mm a">
+				<reportElement x="90" y="20" width="100" height="20" forecolor="#0033FF" uuid="9e0e4086-a0fd-4305-8f05-5a5b1707416d"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-20" y="50" width="100" height="18" forecolor="#0033FF" uuid="4602bee3-0791-40e4-9bf8-2f31c6741a7e"/>
+				<text><![CDATA[TRAE Wt.     4880]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-20" y="78" width="100" height="18" forecolor="#0033FF" uuid="2aa94712-c3d7-4817-9913-bcd6293611c0"/>
+				<text><![CDATA[NET Wt.       8620]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy/HH:mm a">
+				<reportElement x="90" y="52" width="102" height="15" forecolor="#0033FF" uuid="3abd3337-6f69-46d7-ad97-44580ce103e0"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<line>
+				<reportElement x="-24" y="0" width="209" height="1" forecolor="#0033FF" uuid="ce1e8650-aa1c-4003-a812-a79076eb4901"/>
+			</line>
+			<staticText>
+				<reportElement x="-20" y="10" width="100" height="20" forecolor="#0033FF" uuid="f5e9a311-1d1a-4c32-a938-5d6f4bc9bd9a"/>
+				<text><![CDATA[AMOUNT]]></text>
+			</staticText>
+			<line>
+				<reportElement x="80" y="0" width="1" height="49" uuid="93891dca-9664-4bfc-8aef-60820f297466"/>
+			</line>
+			<staticText>
+				<reportElement x="83" y="10" width="66" height="20" forecolor="#0033FF" uuid="e0c4722f-d18c-4efb-a046-6384ca08b843"/>
+				<text><![CDATA[PAYMODE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="30" width="104" height="20" forecolor="#0033FF" uuid="84164a76-ce43-4021-92ff-6ad3ea35aff0"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[CREDIT BILL]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-24" y="50" width="209" height="1" forecolor="#0033FF" uuid="a6035ac7-b916-4942-8daa-7bc50dfec68c"/>
+			</line>
+			<staticText>
+				<reportElement x="-20" y="60" width="100" height="30" forecolor="#0033FF" uuid="2bcd16a8-f80d-4778-b1d9-461677a5a927"/>
+				<text><![CDATA[Authorised Signatory]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
