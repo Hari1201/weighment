@@ -1,27 +1,32 @@
 package com.weighment.api.model;
 
+import java.math.BigInteger;
 import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class ProductDetails {
 
-	private Long productId;
+	private BigInteger productId;
 	private String productName;
 
 	private String productRate;
 
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date createdDate;
 
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date updatedDate;
 
 	public ProductDetails() {
 		super();
 	}
 
-	public void setProductId(Long productId) {
+	public void setProductId(BigInteger productId) {
 		this.productId = productId;
 	}
 
-	public Long getProductId() {
+	public BigInteger getProductId() {
 		return this.productId;
 	}
 

@@ -3,20 +3,22 @@ package com.weighment.api.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Date;
 
 import javax.persistence.*;
 @Entity
 @Table(name="vehicle_details", catalog="weighment_db" )
 @NamedQueries ( {
-  @NamedQuery ( name="VehicleDetails.countAll", query="SELECT COUNT(x) FROM VehicleDetails x" )
+  @NamedQuery ( name="VehicleDetailsEntity.countAll", query="SELECT COUNT(x) FROM VehicleDetailsEntity x" )
 } )
-public class VehicleDetails implements Serializable
+public class VehicleDetailsEntity implements Serializable
 {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="vechile_id", nullable=false)
-    private Long       vechileId    ;
+    private BigInteger       vechileId    ;
     @Column(name="vehicle_number", nullable=false, length=50)
     private String     vehicleNumber ;
 
@@ -33,15 +35,19 @@ public class VehicleDetails implements Serializable
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="updated_date")
     private Date       updatedDate  ;
-    public VehicleDetails()
+    public VehicleDetailsEntity()
     {
 		super();
     }
-        public void setVechileId( Long vechileId )
+        public void setVechileId( BigInteger vechileId )
     {
         this.vechileId = vechileId ;
     }
 
+    	public BigInteger getVechileId()
+        {
+            return this.vechileId;
+        }
 	public BigDecimal getTareWeight() {
 		return tareWeight;
 	}
@@ -49,10 +55,7 @@ public class VehicleDetails implements Serializable
 	public void setTareWeight(BigDecimal tareWeight) {
 		this.tareWeight = tareWeight;
 	}
-	public Long getVechileId()
-    {
-        return this.vechileId;
-    }
+
     public void setVehicleNumber( String vehicleNumber )
     {
         this.vehicleNumber = vehicleNumber;

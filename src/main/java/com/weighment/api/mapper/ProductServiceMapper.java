@@ -4,7 +4,8 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.stereotype.Component;
 
-import com.weighment.api.entity.ProductDetails;
+import com.weighment.api.entity.ProductDetailsEntity;
+import com.weighment.api.model.ProductDetails;
 
 @Component
 public class ProductServiceMapper extends AbstractServiceMapper{
@@ -16,22 +17,22 @@ public class ProductServiceMapper extends AbstractServiceMapper{
 		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 	}
 
-	public com.weighment.api.model.ProductDetails mapMzModuleEntityToMzModule(ProductDetails mzModuleEntity) {
-		if(mzModuleEntity == null) {
+	public ProductDetails mapProductDetailsEntityToProductDetails(ProductDetailsEntity productDetailsEntity) {
+		if(productDetailsEntity == null) {
 			return null;
 		}
 
-		com.weighment.api.model.ProductDetails mzModule = map(mzModuleEntity, com.weighment.api.model.ProductDetails.class);
+		ProductDetails productDetail = map(productDetailsEntity, ProductDetails.class);
 
-		return mzModule;
+		return productDetail;
 	}
 	
-	public void mapMzModuleToMzModuleEntity(com.weighment.api.model.ProductDetails mzModule, ProductDetails mzModuleEntity) {
-		if(mzModule == null) {
+	public void mapProductDetailsToProductDetailsEntity(ProductDetails productDetail, ProductDetailsEntity productDetailsEntity) {
+		if(productDetail == null) {
 			return;
 		}
 
-		map(mzModule, mzModuleEntity);
+		map(productDetail, productDetailsEntity);
 
 	}
 	

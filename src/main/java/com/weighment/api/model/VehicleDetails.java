@@ -2,15 +2,30 @@
 package com.weighment.api.model;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class VehicleDetails {
-	private Long vechileId;
+	
+	private BigInteger vechileId;
 	private String vehicleNumber;
 
 	private String vehicleName;
 	
-    private BigDecimal    tareWeight  ;
+    private BigDecimal tareWeight;
+
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+	private Date createdDate;
+	
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+	private Date updatedDate;
+
+	public VehicleDetails() {
+		super();
+	}
+
 
 	public BigDecimal getTareWeight() {
 		return tareWeight;
@@ -19,20 +34,11 @@ public class VehicleDetails {
 	public void setTareWeight(BigDecimal tareWeight) {
 		this.tareWeight = tareWeight;
 	}
-
-	private Date createdDate;
-
-	private Date updatedDate;
-
-	public VehicleDetails() {
-		super();
-	}
-
-	public void setVechileId(Long vechileId) {
+	public void setVechileId(BigInteger vechileId) {
 		this.vechileId = vechileId;
 	}
 
-	public Long getVechileId() {
+	public BigInteger getVechileId() {
 		return this.vechileId;
 	}
 

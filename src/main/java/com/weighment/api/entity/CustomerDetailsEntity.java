@@ -6,15 +6,16 @@ import javax.persistence.*;
 @Entity
 @Table(name="customer_details", catalog="weighment_db" )
 @NamedQueries ( {
-  @NamedQuery ( name="CustomerDetails.countAll", query="SELECT COUNT(x) FROM CustomerDetails x" )
+  @NamedQuery ( name="CustomerDetailsEntity.countAll", query="SELECT COUNT(x) FROM CustomerDetailsEntity x" )
 } )
-public class CustomerDetails implements Serializable
+public class CustomerDetailsEntity implements Serializable
 {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="customer_id", nullable=false)
     private BigInteger       customerId   ;
+    
     @Column(name="customer_name", nullable=false, length=100)
     private String     customerName ;
 
@@ -23,12 +24,12 @@ public class CustomerDetails implements Serializable
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="created_date", nullable=false)
-    private Date       createdDte   ;
+    private Date       createdDate   ;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="updated_date")
     private Date       updatedDate  ;
-    public CustomerDetails()
+    public CustomerDetailsEntity()
     {
 		super();
     }
@@ -57,16 +58,15 @@ public class CustomerDetails implements Serializable
         return this.customerPhone;
     }
 
-    public void setCreatedDte( Date createdDte )
-    {
-        this.createdDte = createdDte;
-    }
-    public Date getCreatedDte()
-    {
-        return this.createdDte;
-    }
 
-    public void setUpdatedDate( Date updatedDate )
+
+    public Date getCreatedDate() {
+		return createdDate;
+	}
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+	public void setUpdatedDate( Date updatedDate )
     {
         this.updatedDate = updatedDate;
     }
@@ -83,7 +83,7 @@ public class CustomerDetails implements Serializable
         sb.append("|");
         sb.append(customerPhone);
         sb.append("|");
-        sb.append(createdDte);
+        sb.append(createdDate);
         sb.append("|");
         sb.append(updatedDate);
         return sb.toString(); 

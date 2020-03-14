@@ -1,22 +1,23 @@
 package com.weighment.api.entity;
 
 import java.io.Serializable;
-
+import java.math.BigInteger;
 import java.util.Date;
 
 import javax.persistence.*;
 @Entity
 @Table(name="product_details", catalog="weighment_db" )
 @NamedQueries ( {
-  @NamedQuery ( name="ProductDetails.countAll", query="SELECT COUNT(x) FROM ProductDetails x" )
+  @NamedQuery ( name="ProductDetailsEntity.countAll", query="SELECT COUNT(x) FROM ProductDetailsEntity x" )
 } )
-public class ProductDetails implements Serializable
+public class ProductDetailsEntity implements Serializable
 {
     private static final long serialVersionUID = 1L;
 
       @Id
+      @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="product_id", nullable=false)
-    private Long       productId    ;
+    private BigInteger       productId    ;
     @Column(name="product_name", nullable=false, length=50)
     private String     productName  ;
 
@@ -30,15 +31,15 @@ public class ProductDetails implements Serializable
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="updated_date")
     private Date       updatedDate  ;
-    public ProductDetails()
+    public ProductDetailsEntity()
     {
 		super();
     }
-        public void setProductId( Long productId )
+        public void setProductId( BigInteger productId )
     {
         this.productId = productId ;
     }
-    public Long getProductId()
+    public BigInteger getProductId()
     {
         return this.productId;
     }

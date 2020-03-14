@@ -15,7 +15,7 @@ public class CustomerDetails implements Serializable{
 	private String customerPhone;
 	
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
-	private Date createdDte;
+	private Date createdDate;
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date updatedDate;
 
@@ -46,12 +46,15 @@ public class CustomerDetails implements Serializable{
 	public String getCustomerPhone() {
 		return this.customerPhone;
 	}
-	public void setCreatedDte(Date createdDte) {
-		this.createdDte = createdDte;
+
+
+	public Date getCreatedDate() {
+		return createdDate;
 	}
-	public Date getCreatedDte() {
-		return this.createdDte;
-	}		
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
 
 	public void setUpdatedDate(Date updatedDate) {
 		this.updatedDate = updatedDate;
@@ -69,7 +72,7 @@ public class CustomerDetails implements Serializable{
 		sb.append("|");
 		sb.append(customerPhone);
 		sb.append("|");
-		sb.append(createdDte);
+		sb.append(createdDate);
 		sb.append("|");
 		sb.append(updatedDate);
 		return sb.toString();

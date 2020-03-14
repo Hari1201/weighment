@@ -4,7 +4,8 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.stereotype.Component;
 
-import com.weighment.api.entity.VehicleDetails;
+import com.weighment.api.entity.VehicleDetailsEntity;
+import com.weighment.api.model.VehicleDetails;
 
 @Component
 public class VehicleServiceMapper extends AbstractServiceMapper{
@@ -16,22 +17,22 @@ public class VehicleServiceMapper extends AbstractServiceMapper{
 		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 	}
 
-	public com.weighment.api.model.VehicleDetails mapMzModuleEntityToMzModule(VehicleDetails mzModuleEntity) {
-		if(mzModuleEntity == null) {
+	public VehicleDetails mapVehicleDetailsEntityToVehicleDetails(VehicleDetailsEntity vehicleDetailsEntity) {
+		if(vehicleDetailsEntity == null) {
 			return null;
 		}
 
-		com.weighment.api.model.VehicleDetails mzModule = map(mzModuleEntity, com.weighment.api.model.VehicleDetails.class);
+		VehicleDetails vehicleDetail = map(vehicleDetailsEntity, VehicleDetails.class);
 
-		return mzModule;
+		return vehicleDetail;
 	}
 	
-	public void mapMzModuleToMzModuleEntity(com.weighment.api.model.VehicleDetails mzModule, VehicleDetails mzModuleEntity) {
-		if(mzModule == null) {
+	public void mapVehicleDetailsToVehicleDetailsEntity(VehicleDetails vehicleDetail, VehicleDetailsEntity vehicleDetailsEntity) {
+		if(vehicleDetail == null) {
 			return;
 		}
 
-		map(mzModule, mzModuleEntity);
+		map(vehicleDetail, vehicleDetailsEntity);
 
 	}
 	
