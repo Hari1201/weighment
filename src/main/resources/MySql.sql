@@ -24,7 +24,7 @@ INSERT INTO `customer_details` (`customer_id`, `customer_name`, `customer_phone`
 /*!40000 ALTER TABLE `customer_details` ENABLE KEYS */;
 
 CREATE TABLE IF NOT EXISTS `product_details` (
-  `product_id` bigint(20) NOT NULL,
+  `product_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `product_name` varchar(50) NOT NULL,
   `product_rate` varchar(50) DEFAULT NULL,
   `created_date` datetime NOT NULL,
@@ -40,7 +40,7 @@ INSERT INTO `product_details` (`product_id`, `product_name`, `product_rate`, `cr
 /*!40000 ALTER TABLE `product_details` ENABLE KEYS */;
 
 CREATE TABLE IF NOT EXISTS `vehicle_details` (
-  `vechile_id` bigint(20) NOT NULL,
+  `vechile_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `vehicle_number` varchar(50) NOT NULL,
   `vehicle_name` varchar(50) DEFAULT NULL,
   `tare_weight` decimal(10,0) NOT NULL,
@@ -70,12 +70,12 @@ CREATE TABLE IF NOT EXISTS `weighment_entry_details` (
   `pay_mode` varchar(10) NOT NULL,
   `created_date` datetime NOT NULL,
   PRIMARY KEY (`wei_id`),
-  KEY `FK1_vehicle` (`vehicle_id`),
   KEY `FK2_customer` (`customer_id`),
   KEY `FK3_product` (`product_id`),
-  CONSTRAINT `FK1_vehicle` FOREIGN KEY (`vehicle_id`) REFERENCES `vehicle_details` (`vechile_id`),
+  KEY `FK3_vehicle` (`vehicle_id`),
   CONSTRAINT `FK2_customer` FOREIGN KEY (`customer_id`) REFERENCES `customer_details` (`customer_id`),
-  CONSTRAINT `FK3_product` FOREIGN KEY (`product_id`) REFERENCES `product_details` (`product_id`)
+  CONSTRAINT `FK3_product` FOREIGN KEY (`product_id`) REFERENCES `product_details` (`product_id`),
+  CONSTRAINT `FK3_vehicle` FOREIGN KEY (`vehicle_id`) REFERENCES `vehicle_details` (`vechile_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*!40000 ALTER TABLE `weighment_entry_details` DISABLE KEYS */;
@@ -86,18 +86,3 @@ INSERT INTO `weighment_entry_details` (`wei_id`, `vehicle_id`, `customer_id`, `p
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-
-
-
-
-SELECT vd.vehicle_number,vd.tare_weight,vd.created_date,cd.customer_name,pd.product_name,
-wed.gross_weight,wed.gross_date,wed.net_weight,wed.amount,wed.pay_mode 
-FROM weighment_entry_details wed, customer_details cd, product_details pd, vehicle_details vd 
-WHERE 
-wed.vehicle_id=vd.vechile_id 
-AND
-wed.customer_id=cd.customer_id
-AND
-wed.product_id=pd.product_id
-AND
-wed.wei_id=1;
