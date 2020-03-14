@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.*;
 @Entity
@@ -35,6 +36,10 @@ public class VehicleDetailsEntity implements Serializable
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="updated_date")
     private Date       updatedDate  ;
+    
+    @OneToMany(mappedBy="vehicleDetails", targetEntity=WeighmentEntryDetailsEntity.class)
+    private List<WeighmentEntryDetailsEntity> listOfWeighmentEntryDetails;
+
     public VehicleDetailsEntity()
     {
 		super();
@@ -90,6 +95,15 @@ public class VehicleDetailsEntity implements Serializable
     public Date getUpdatedDate()
     {
         return this.updatedDate;
+    }
+    
+    public void setListOfWeighmentEntryDetails( List<WeighmentEntryDetailsEntity> listOfWeighmentEntryDetails )
+    {
+        this.listOfWeighmentEntryDetails = listOfWeighmentEntryDetails;
+    }
+    public List<WeighmentEntryDetailsEntity> getListOfWeighmentEntryDetails()
+    {
+        return this.listOfWeighmentEntryDetails;
     }
     public String toString() { 
         StringBuffer sb = new StringBuffer(); 

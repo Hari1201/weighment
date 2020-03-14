@@ -2,7 +2,19 @@ package com.weighment.api.entity;
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Date;
-import javax.persistence.*;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 @Entity
 @Table(name="customer_details", catalog="weighment_db" )
 @NamedQueries ( {
@@ -29,6 +41,10 @@ public class CustomerDetailsEntity implements Serializable
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="updated_date")
     private Date       updatedDate  ;
+    
+    @OneToMany(mappedBy="customerDetails", targetEntity=WeighmentEntryDetailsEntity.class)
+    private List<WeighmentEntryDetailsEntity> listOfWeighmentEntryDetails;
+
     public CustomerDetailsEntity()
     {
 		super();
@@ -74,6 +90,16 @@ public class CustomerDetailsEntity implements Serializable
     {
         return this.updatedDate;
     }
+    
+    public void setListOfWeighmentEntryDetails( List<WeighmentEntryDetailsEntity> listOfWeighmentEntryDetails )
+    {
+        this.listOfWeighmentEntryDetails = listOfWeighmentEntryDetails;
+    }
+    public List<WeighmentEntryDetailsEntity> getListOfWeighmentEntryDetails()
+    {
+        return this.listOfWeighmentEntryDetails;
+    }
+
     public String toString() { 
         StringBuffer sb = new StringBuffer(); 
         sb.append("["); 
