@@ -17,12 +17,12 @@ public class CustomerServiceMapper extends AbstractServiceMapper{
 		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 	}
 
-	public com.weighment.api.model.CustomerDetails mapCustomerDetailsEntityToCustomerDetails(CustomerDetailsEntity customerDetailsEntity) {
+	public CustomerDetails mapCustomerDetailsEntityToCustomerDetails(CustomerDetailsEntity customerDetailsEntity) {
 		if(customerDetailsEntity == null) {
 			return null;
 		}
 
-		com.weighment.api.model.CustomerDetails customerDetails = map(customerDetailsEntity, com.weighment.api.model.CustomerDetails.class);
+		CustomerDetails customerDetails = map(customerDetailsEntity, CustomerDetails.class);
 		return customerDetails;
 	}
 	

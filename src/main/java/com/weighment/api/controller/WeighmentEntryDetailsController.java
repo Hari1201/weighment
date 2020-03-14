@@ -22,8 +22,8 @@ import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperPrint;
 
 @Controller
-@RequestMapping("/")
-public class UserController {
+@RequestMapping("/weighmententry")
+public class WeighmentEntryDetailsController {
 
  @Autowired
  private UserService userService;

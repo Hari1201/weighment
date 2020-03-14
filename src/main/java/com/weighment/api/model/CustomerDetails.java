@@ -7,7 +7,7 @@ import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 
-public class CustomerDetails implements Serializable{
+public class CustomerDetails{
 
 	private BigInteger customerId;
 	private String customerName;
