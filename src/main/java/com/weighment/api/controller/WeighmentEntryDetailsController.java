@@ -1,63 +1,46 @@
 package com.weighment.api.controller;
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.print.PrintService;
-import javax.print.PrintServiceLookup;
+import java.math.BigDecimal;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.weighment.api.model.Printer;
-import com.weighment.api.model.PrinterForm;
-import com.weighment.api.service.UserService;
+import com.weighment.api.model.JsonResponse;
+import com.weighment.api.model.WeighmentEntryDetails;
+import com.weighment.api.service.WeighmentEntryService;
 
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperPrint;
-
-@Controller
+@RestController
 @RequestMapping("/weighmententry")
 public class WeighmentEntryDetailsController {
 
- @Autowired
- private UserService userService;
+	@Autowired
+	private WeighmentEntryService weighmentEntryService;
 
- @RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
- public ModelAndView home() {
-  ModelAndView model = new ModelAndView();
-  PrinterForm printerForm = new PrinterForm();
+	@PostMapping
+	public JsonResponse weighmentEntry(@RequestBody WeighmentEntryDetails weighmentEntryDetails) {
+		try {
+			if(weighmentEntryDetails.getGrossWeight()==null || weighmentEntryDetails.getGrossWeight().compareTo(BigDecimal.ZERO) <= 0) {
+				return new JsonResponse(Boolean.FALSE,"Please enter valid gross weight!!!");
+			}
+			if(weighmentEntryDetails.getRate()==null || weighmentEntryDetails.getRate().compareTo(BigDecimal.ZERO) <= 0) {
+				return new JsonResponse(Boolean.FALSE,"Please enter valid rate!!!");
+			} 
+			if(weighmentEntryDetails.getPayMode()==null) {
+				return new JsonResponse(Boolean.FALSE,"Please enter payment mode!!!");
+			}
+			if(weighmentEntryDetails.getGrossDate()==null || weighmentEntryDetails.getGrossDate().after(new Date())) {
+				return new JsonResponse(Boolean.FALSE,"Please enter valid gross weight date!!!");
+			}
+			
+			return weighmentEntryService.save(weighmentEntryDetails);
+		}catch (Exception e) {
+			return new JsonResponse(e.getMessage(),"Data Not Saved!!!",Boolean.FALSE);
+		}
+	}
 
-  PrintService[] services = PrintServiceLookup.lookupPrintServices(null, null);
-  List<Printer> printers = new ArrayList<Printer>();
-  for (PrintService service : services) {
-   Printer printer = new Printer();
-   printer.setPrinterName(service.getName());
-
-   printers.add(printer);
-  }
-
-  model.addObject("listPrinters", printers);
-  model.addObject("printerForm", printerForm);
-
-  model.setViewName("home");
-  return model;
- }
-
- @RequestMapping(value = "/printDirect", method = RequestMethod.POST)
- public void printDirect(@ModelAttribute("printerForm") PrinterForm printerForm, ModelAndView model)
-   throws IOException, JRException, SQLException {
-	 
-	  PrintService[] services = PrintServiceLookup.lookupPrintServices(null, null);
-	  List<Printer> printers = new ArrayList<Printer>();
-  JasperPrint jasperPrint = null;
-  jasperPrint = userService.exportPdfFile();
-
-  userService.printReport(jasperPrint, "Champ RP Series");
- }
+	
 }

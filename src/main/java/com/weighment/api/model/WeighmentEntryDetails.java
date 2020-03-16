@@ -3,23 +3,26 @@ package com.weighment.api.model;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 public class WeighmentEntryDetails {
 
-    private BigInteger       weiId        ;
+    private BigInteger       weiId;
 
-    private BigDecimal grossWeight  ;
+    private BigDecimal grossWeight;
+    
+    private Date       grossDate;
 
-    private Date       grossDate    ;
+    private BigDecimal netWeight;
 
-    private BigDecimal netWeight    ;
+    private BigDecimal rate;
 
-    private BigDecimal rate         ;
+    private BigDecimal amount;
 
-    private BigDecimal amount       ;
-
-    private String     payMode      ;
-
-    private Date       createdDate  ;
+    private String     payMode;
+    
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    private Date       createdDate;
 
     private BigInteger productId;
 

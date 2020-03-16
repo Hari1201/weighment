@@ -123,14 +123,14 @@ wed.wei_id= $P{wed_id}]]>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="39" y="110" width="81" height="20" uuid="7f1b7970-ed83-4f0e-9041-68f27587c572"/>
+				<reportElement x="39" y="110" width="91" height="20" uuid="7f1b7970-ed83-4f0e-9041-68f27587c572"/>
 				<textElement>
 					<font fontName="Times New Roman"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{vehicle_number}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="39" y="140" width="81" height="20" uuid="b48b758e-db6e-4de7-b334-d070e21974f8"/>
+				<reportElement x="39" y="140" width="91" height="20" uuid="b48b758e-db6e-4de7-b334-d070e21974f8"/>
 				<textElement>
 					<font fontName="Times New Roman"/>
 				</textElement>

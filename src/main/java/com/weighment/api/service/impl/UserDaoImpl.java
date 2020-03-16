@@ -53,7 +53,7 @@ public class UserDaoImpl {
 
   // Parameters for report
   Map<String, Object> parameters = new HashMap<String, Object>();
-  parameters.put("wed_id",1);
+  parameters.put("wed_id",new Long(2));
   JasperPrint print = JasperFillManager.fillReport(jasperReport, parameters,conn);
 
   return print;
