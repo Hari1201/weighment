@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,9 +18,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 @Entity
 @Table(name="customer_details", catalog="weighment_db" )
-@NamedQueries ( {
-  @NamedQuery ( name="CustomerDetailsEntity.countAll", query="SELECT COUNT(x) FROM CustomerDetailsEntity x" )
-} )
 public class CustomerDetailsEntity implements Serializable
 {
     private static final long serialVersionUID = 1L;
@@ -42,10 +40,17 @@ public class CustomerDetailsEntity implements Serializable
     @Column(name="updated_date")
     private Date       updatedDate  ;
     
-    @OneToMany(mappedBy="customerDetails", targetEntity=WeighmentEntryDetailsEntity.class)
-    private List<WeighmentEntryDetailsEntity> listOfWeighmentEntryDetails;
+/*    @OneToMany(fetch = FetchType.LAZY,mappedBy="customerDetails", targetEntity=WeighmentEntryDetailsEntity.class )
+    private List<WeighmentEntryDetailsEntity> listOfWeighmentEntryDetailsCustomer;
 
-    public CustomerDetailsEntity()
+    public List<WeighmentEntryDetailsEntity> getListOfWeighmentEntryDetailsCustomer() {
+		return listOfWeighmentEntryDetailsCustomer;
+	}
+	public void setListOfWeighmentEntryDetailsCustomer(
+			List<WeighmentEntryDetailsEntity> listOfWeighmentEntryDetailsCustomer) {
+		this.listOfWeighmentEntryDetailsCustomer = listOfWeighmentEntryDetailsCustomer;
+	}*/
+	public CustomerDetailsEntity()
     {
 		super();
     }
@@ -90,15 +95,7 @@ public class CustomerDetailsEntity implements Serializable
     {
         return this.updatedDate;
     }
-    
-    public void setListOfWeighmentEntryDetails( List<WeighmentEntryDetailsEntity> listOfWeighmentEntryDetails )
-    {
-        this.listOfWeighmentEntryDetails = listOfWeighmentEntryDetails;
-    }
-    public List<WeighmentEntryDetailsEntity> getListOfWeighmentEntryDetails()
-    {
-        return this.listOfWeighmentEntryDetails;
-    }
+
 
     public String toString() { 
         StringBuffer sb = new StringBuffer(); 

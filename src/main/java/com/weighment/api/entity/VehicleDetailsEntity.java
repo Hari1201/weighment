@@ -10,15 +10,13 @@ import java.util.List;
 import javax.persistence.*;
 @Entity
 @Table(name="vehicle_details", catalog="weighment_db" )
-@NamedQueries ( {
-  @NamedQuery ( name="VehicleDetailsEntity.countAll", query="SELECT COUNT(x) FROM VehicleDetailsEntity x" )
-} )
+
 public class VehicleDetailsEntity implements Serializable
 {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(name="vechile_id", nullable=false)
+    @Column(name="vehicle_id", nullable=false)
     private BigInteger       vechileId    ;
     @Column(name="vehicle_number", nullable=false, length=50)
     private String     vehicleNumber ;
@@ -37,10 +35,17 @@ public class VehicleDetailsEntity implements Serializable
     @Column(name="updated_date")
     private Date       updatedDate  ;
     
-    @OneToMany(mappedBy="vehicleDetails", targetEntity=WeighmentEntryDetailsEntity.class)
-    private List<WeighmentEntryDetailsEntity> listOfWeighmentEntryDetails;
+/*    @OneToMany(fetch = FetchType.LAZY,mappedBy="vehicleDetails", targetEntity=WeighmentEntryDetailsEntity.class)
+    private List<WeighmentEntryDetailsEntity> listOfWeighmentEntryDetailsvehicle;
 
-    public VehicleDetailsEntity()
+    public List<WeighmentEntryDetailsEntity> getListOfWeighmentEntryDetailsvehicle() {
+		return listOfWeighmentEntryDetailsvehicle;
+	}
+	public void setListOfWeighmentEntryDetailsvehicle(
+			List<WeighmentEntryDetailsEntity> listOfWeighmentEntryDetailsvehicle) {
+		this.listOfWeighmentEntryDetailsvehicle = listOfWeighmentEntryDetailsvehicle;
+	}*/
+	public VehicleDetailsEntity()
     {
 		super();
     }
@@ -96,15 +101,8 @@ public class VehicleDetailsEntity implements Serializable
     {
         return this.updatedDate;
     }
-    
-    public void setListOfWeighmentEntryDetails( List<WeighmentEntryDetailsEntity> listOfWeighmentEntryDetails )
-    {
-        this.listOfWeighmentEntryDetails = listOfWeighmentEntryDetails;
-    }
-    public List<WeighmentEntryDetailsEntity> getListOfWeighmentEntryDetails()
-    {
-        return this.listOfWeighmentEntryDetails;
-    }
+
+
     public String toString() { 
         StringBuffer sb = new StringBuffer(); 
         sb.append("["); 

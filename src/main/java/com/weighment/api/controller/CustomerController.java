@@ -5,6 +5,7 @@ import java.math.BigInteger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +17,7 @@ import com.weighment.api.model.JsonResponse;
 import com.weighment.api.service.CustomerService;
 
 @RestController
-@RequestMapping("/customer")
+@RequestMapping("/api/customer")
 public class CustomerController {
 
 	@Autowired
@@ -32,8 +33,8 @@ public class CustomerController {
 		}
 	}
 	
-	@GetMapping
-	public JsonResponse getCustomer(@RequestParam String customerName) {
+	@GetMapping("/{id}")
+	public JsonResponse getCustomer(@PathVariable(value = "id") String customerName) {
 		try {
 		return customerService.get(customerName);
 		}catch (Exception e) {
@@ -41,8 +42,8 @@ public class CustomerController {
 		}
 	}
 	
-	@DeleteMapping
-	public JsonResponse delete(@RequestParam BigInteger customerId) {
+	@DeleteMapping("/{id}")
+	public JsonResponse delete(@PathVariable(value = "id") BigInteger customerId) {
 		try {
 		return customerService.delete(customerId);
 		}catch (Exception e) {

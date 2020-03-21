@@ -14,7 +14,7 @@ import com.weighment.api.model.WeighmentEntryDetails;
 import com.weighment.api.service.WeighmentEntryService;
 
 @RestController
-@RequestMapping("/weighmententry")
+@RequestMapping("/api/weighmententry")
 public class WeighmentEntryDetailsController {
 
 	@Autowired
@@ -38,7 +38,7 @@ public class WeighmentEntryDetailsController {
 			
 			return weighmentEntryService.save(weighmentEntryDetails);
 		}catch (Exception e) {
-			return new JsonResponse(e.getMessage(),"Data Not Saved!!!",Boolean.FALSE);
+			return new JsonResponse(Boolean.FALSE,e.getMessage());
 		}
 	}
 

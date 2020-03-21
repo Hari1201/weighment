@@ -5,6 +5,7 @@ import java.math.BigInteger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +17,7 @@ import com.weighment.api.model.ProductDetails;
 import com.weighment.api.service.ProductService;
 
 @RestController
-@RequestMapping("/product")
+@RequestMapping("/api/product")
 public class ProductController {
 
 	@Autowired
@@ -32,8 +33,8 @@ public class ProductController {
 		}
 	}
 	
-	@GetMapping
-	public JsonResponse getProduct(@RequestParam String productName) {
+	@GetMapping("/{id}")
+	public JsonResponse getProduct(@PathVariable(value = "id") String productName) {
 		try {
 		return productService.get(productName);
 		}catch (Exception e) {
@@ -41,8 +42,8 @@ public class ProductController {
 		}
 	}
 	
-	@DeleteMapping
-	public JsonResponse delete(@RequestParam BigInteger productId) {
+	@DeleteMapping("/{id}")
+	public JsonResponse delete(@PathVariable(value = "id") BigInteger productId) {
 		try {
 		return productService.delete(productId);
 		}catch (Exception e) {

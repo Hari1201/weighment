@@ -9,9 +9,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="weighment_entry_details", catalog="weighment_db" )
-@NamedQueries ( {
-  @NamedQuery ( name="WeighmentEntryDetailsEntity.countAll", query="SELECT COUNT(x) FROM WeighmentEntryDetailsEntity x" )
-} )
+
 public class WeighmentEntryDetailsEntity implements Serializable
 {
     private static final long serialVersionUID = 1L;
@@ -44,17 +42,41 @@ public class WeighmentEntryDetailsEntity implements Serializable
     @Column(name="created_date", nullable=false)
     private Date       createdDate  ;
 
-    @ManyToOne
-    @JoinColumn(name="product_id", referencedColumnName="product_id")
-    private ProductDetailsEntity productDetails;
+    @Column(name="product_id", nullable=false)
+    private BigInteger       productId    ;
+    
+    @Column(name="vehicle_id", nullable=false)
+    private BigInteger       vechileId    ;
+    
 
-    @ManyToOne
-    @JoinColumn(name="vehicle_id", referencedColumnName="vechile_id")
-    private VehicleDetailsEntity vehicleDetails;
+	@Column(name="customer_id", nullable=false)
+    private BigInteger       customerId   ;
+  
+    public BigInteger getProductId() {
+		return productId;
+	}
 
-    @ManyToOne
-    @JoinColumn(name="customer_id", referencedColumnName="customer_id")
-    private CustomerDetailsEntity customerDetails;
+	public void setProductId(BigInteger productId) {
+		this.productId = productId;
+	}
+
+	public BigInteger getVechileId() {
+		return vechileId;
+	}
+
+	public void setVechileId(BigInteger vechileId) {
+		this.vechileId = vechileId;
+	}
+
+	public BigInteger getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(BigInteger customerId) {
+		this.customerId = customerId;
+	}
+
+
 
     public WeighmentEntryDetailsEntity()
     {
@@ -133,33 +155,7 @@ public class WeighmentEntryDetailsEntity implements Serializable
         return this.createdDate;
     }
 
-    public void setProductDetails( ProductDetailsEntity productDetails )
-    {
-        this.productDetails = productDetails;
-    }
-    public ProductDetailsEntity getProductDetails()
-    {
-        return this.productDetails;
-    }
-
-    public void setVehicleDetails( VehicleDetailsEntity vehicleDetails )
-    {
-        this.vehicleDetails = vehicleDetails;
-    }
-    public VehicleDetailsEntity getVehicleDetails()
-    {
-        return this.vehicleDetails;
-    }
-
-    public void setCustomerDetails( CustomerDetailsEntity customerDetails )
-    {
-        this.customerDetails = customerDetails;
-    }
-    public CustomerDetailsEntity getCustomerDetails()
-    {
-        return this.customerDetails;
-    }
-
+   
     public String toString() { 
         StringBuffer sb = new StringBuffer(); 
         sb.append("["); 

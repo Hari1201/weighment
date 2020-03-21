@@ -9,7 +9,7 @@
 wed.gross_weight,wed.gross_date,wed.net_weight,wed.amount,wed.pay_mode,wed.wei_id 
  FROM weighment_entry_details wed, customer_details cd, product_details pd, vehicle_details vd 
 WHERE 
-wed.vehicle_id=vd.vechile_id 
+wed.vehicle_id=vd.vehicle_id 
 AND
 wed.customer_id=cd.customer_id
 AND

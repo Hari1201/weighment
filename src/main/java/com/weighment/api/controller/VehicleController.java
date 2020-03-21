@@ -5,6 +5,7 @@ import java.math.BigInteger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +17,7 @@ import com.weighment.api.model.VehicleDetails;
 import com.weighment.api.service.VehicleService;
 
 @RestController
-@RequestMapping("/vehicle")
+@RequestMapping("/api/vehicle")
 public class VehicleController {
 
 	@Autowired
@@ -32,8 +33,8 @@ public class VehicleController {
 		}
 	}
 	
-	@GetMapping
-	public JsonResponse getVehicle(@RequestParam String vehicleNumber) {
+	@GetMapping("/{id}")
+	public JsonResponse getVehicle(@PathVariable(value = "id") String vehicleNumber) {
 		try {
 		return vehicleService.get(vehicleNumber);
 		}catch (Exception e) {
@@ -41,8 +42,8 @@ public class VehicleController {
 		}
 	}
 	
-	@DeleteMapping
-	public JsonResponse delete(@RequestParam BigInteger vehicleId) {
+	@DeleteMapping("/{id}")
+	public JsonResponse delete(@PathVariable(value = "id") BigInteger vehicleId) {
 		try {
 		return vehicleService.delete(vehicleId);
 		}catch (Exception e) {

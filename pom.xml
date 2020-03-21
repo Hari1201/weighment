@@ -116,6 +116,11 @@
    <artifactId>spring-boot-configuration-processor</artifactId>
    <optional>true</optional>
   </dependency>
+  <dependency>
+  <groupId>com.profesorfalken</groupId>
+  <artifactId>WMI4Java</artifactId>
+  <version>1.4.2</version>
+</dependency>
 	</dependencies>
 
 	<build>

@@ -83,19 +83,19 @@ public class WeighmentEntryServiceImpl implements WeighmentEntryService {
 		if(customerDetailsEntity==null) {
 			return new JsonResponse(Boolean.FALSE,"Please select customer!!!");
 		}else {
-			addEntry.setCustomerDetails(customerDetailsEntity);
-		}
+			addEntry.setCustomerId(customerDetailsEntity.getCustomerId());
+		}		
 		ProductDetailsEntity  productDetailsEntity= productDetailsRepository.findByProductId(weighmentEntryDetails.getProductId());
 		if(productDetailsEntity==null) {
 			return new JsonResponse(Boolean.FALSE,"Please select product!!!");
 		}else {
-			addEntry.setProductDetails(productDetailsEntity);
+			addEntry.setProductId(productDetailsEntity.getProductId());
 		}
 		VehicleDetailsEntity vehicleDetailsEntity = vehicleDetailsRepository.findByVechileId(weighmentEntryDetails.getVehicleId());
 		if(vehicleDetailsEntity==null) {
 			return new JsonResponse(Boolean.FALSE,"Please select vehicle!!!");
 		}else {
-			addEntry.setVehicleDetails(vehicleDetailsEntity);
+			addEntry.setVechileId(vehicleDetailsEntity.getVechileId());
 		}
 		WeighmentEntryDetailsEntity savedEntity = weighmentEntryDetailsRepository.saveAndFlush(addEntry);
 		if (savedEntity != null) {
@@ -164,7 +164,6 @@ public class WeighmentEntryServiceImpl implements WeighmentEntryService {
 		  PrintService selectedService = null;
 		  if (services.length != 0 || services != null) {
 		   for (PrintService service : services) {
-			   System.out.println(service.getName());
 		    String existingPrinter = service.getName();
 		    if (existingPrinter.equals(selectedPrinter)) {
 		     selectedService = service;
@@ -176,7 +175,8 @@ public class WeighmentEntryServiceImpl implements WeighmentEntryService {
 		  if (selectedService != null) {
 		   exporter.exportReport();
 		  } else {
-			  throw new Exception();		  }
+			  throw new Exception("Check Printer");
+			  }
 		 }
 
 	/* public void exportPdfFile(Long entryId, String printer) throws Exception {

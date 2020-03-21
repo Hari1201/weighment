@@ -8,9 +8,7 @@ import java.util.List;
 import javax.persistence.*;
 @Entity
 @Table(name="product_details", catalog="weighment_db" )
-@NamedQueries ( {
-  @NamedQuery ( name="ProductDetailsEntity.countAll", query="SELECT COUNT(x) FROM ProductDetailsEntity x" )
-} )
+
 public class ProductDetailsEntity implements Serializable
 {
     private static final long serialVersionUID = 1L;
@@ -32,10 +30,21 @@ public class ProductDetailsEntity implements Serializable
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="updated_date")
     private Date       updatedDate  ;
-    
-    @OneToMany(mappedBy="productDetails", targetEntity=WeighmentEntryDetailsEntity.class)
-    private List<WeighmentEntryDetailsEntity> listOfWeighmentEntryDetails;
 
+
+/*
+	@OneToMany(fetch = FetchType.LAZY,mappedBy="productDetails", targetEntity=WeighmentEntryDetailsEntity.class)
+    private List<WeighmentEntryDetailsEntity> listOfWeighmentEntryDetailsProduct;
+
+    
+    public List<WeighmentEntryDetailsEntity> getListOfWeighmentEntryDetailsProduct() {
+		return listOfWeighmentEntryDetailsProduct;
+	}
+	public void setListOfWeighmentEntryDetailsProduct(
+			List<WeighmentEntryDetailsEntity> listOfWeighmentEntryDetailsProduct) {
+		this.listOfWeighmentEntryDetailsProduct = listOfWeighmentEntryDetailsProduct;
+	}*/
+	
     public ProductDetailsEntity()
     {
 		super();
@@ -84,14 +93,7 @@ public class ProductDetailsEntity implements Serializable
         return this.updatedDate;
     }
     
-    public void setListOfWeighmentEntryDetails( List<WeighmentEntryDetailsEntity> listOfWeighmentEntryDetails )
-    {
-        this.listOfWeighmentEntryDetails = listOfWeighmentEntryDetails;
-    }
-    public List<WeighmentEntryDetailsEntity> getListOfWeighmentEntryDetails()
-    {
-        return this.listOfWeighmentEntryDetails;
-    }
+
     public String toString() { 
         StringBuffer sb = new StringBuffer(); 
         sb.append("["); 
