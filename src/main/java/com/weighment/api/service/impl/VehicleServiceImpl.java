@@ -30,7 +30,7 @@ public class VehicleServiceImpl implements VehicleService {
 	public JsonResponse save(VehicleDetails vehicleDetail) {
 		try {
 			VehicleDetailsEntity isVehicleExists = vehicleDetailsRepository
-					.findByVechileId(vehicleDetail.getVechileId());
+					.findByvehicleId(vehicleDetail.getVehicleId());
 			if (isVehicleExists == null) {
 				VehicleDetailsEntity isVehicleNameExists = vehicleDetailsRepository
 						.findByVehicleNumber(vehicleDetail.getVehicleNumber());

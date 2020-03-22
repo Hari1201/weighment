@@ -46,7 +46,7 @@ public class WeighmentEntryDetailsEntity implements Serializable
     private BigInteger       productId    ;
     
     @Column(name="vehicle_id", nullable=false)
-    private BigInteger       vechileId    ;
+    private BigInteger       vehicleId    ;
     
 
 	@Column(name="customer_id", nullable=false)
@@ -60,12 +60,13 @@ public class WeighmentEntryDetailsEntity implements Serializable
 		this.productId = productId;
 	}
 
-	public BigInteger getVechileId() {
-		return vechileId;
+
+	public BigInteger getVehicleId() {
+		return vehicleId;
 	}
 
-	public void setVechileId(BigInteger vechileId) {
-		this.vechileId = vechileId;
+	public void setVehicleId(BigInteger vehicleId) {
+		this.vehicleId = vehicleId;
 	}
 
 	public BigInteger getCustomerId() {

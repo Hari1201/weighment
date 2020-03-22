@@ -91,11 +91,11 @@ public class WeighmentEntryServiceImpl implements WeighmentEntryService {
 		}else {
 			addEntry.setProductId(productDetailsEntity.getProductId());
 		}
-		VehicleDetailsEntity vehicleDetailsEntity = vehicleDetailsRepository.findByVechileId(weighmentEntryDetails.getVehicleId());
+		VehicleDetailsEntity vehicleDetailsEntity = vehicleDetailsRepository.findByvehicleId(weighmentEntryDetails.getVehicleId());
 		if(vehicleDetailsEntity==null) {
 			return new JsonResponse(Boolean.FALSE,"Please select vehicle!!!");
 		}else {
-			addEntry.setVechileId(vehicleDetailsEntity.getVechileId());
+			addEntry.setVehicleId(vehicleDetailsEntity.getVehicleId());
 		}
 		WeighmentEntryDetailsEntity savedEntity = weighmentEntryDetailsRepository.saveAndFlush(addEntry);
 		if (savedEntity != null) {

@@ -17,7 +17,7 @@ public class VehicleDetailsEntity implements Serializable
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="vehicle_id", nullable=false)
-    private BigInteger       vechileId    ;
+    private BigInteger       vehicleId    ;
     @Column(name="vehicle_number", nullable=false, length=50)
     private String     vehicleNumber ;
 
@@ -49,15 +49,15 @@ public class VehicleDetailsEntity implements Serializable
     {
 		super();
     }
-        public void setVechileId( BigInteger vechileId )
-    {
-        this.vechileId = vechileId ;
-    }
 
-    	public BigInteger getVechileId()
-        {
-            return this.vechileId;
-        }
+	public BigInteger getVehicleId() {
+		return vehicleId;
+	}
+
+	public void setVehicleId(BigInteger vehicleId) {
+		this.vehicleId = vehicleId;
+	}
+
 	public BigDecimal getTareWeight() {
 		return tareWeight;
 	}
@@ -106,7 +106,7 @@ public class VehicleDetailsEntity implements Serializable
     public String toString() { 
         StringBuffer sb = new StringBuffer(); 
         sb.append("["); 
-        sb.append(vechileId);
+        sb.append(vehicleId);
         sb.append("]:"); 
         sb.append(vehicleNumber);
         sb.append("|");

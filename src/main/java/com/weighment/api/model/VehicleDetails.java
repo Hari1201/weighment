@@ -9,8 +9,17 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class VehicleDetails {
 	
-	private BigInteger vechileId;
+	private BigInteger vehicleId;
 	private String vehicleNumber;
+
+	public BigInteger getVehicleId() {
+		return vehicleId;
+	}
+
+
+	public void setVehicleId(BigInteger vehicleId) {
+		this.vehicleId = vehicleId;
+	}
 
 	private String vehicleName;
 	
@@ -34,13 +43,7 @@ public class VehicleDetails {
 	public void setTareWeight(BigDecimal tareWeight) {
 		this.tareWeight = tareWeight;
 	}
-	public void setVechileId(BigInteger vechileId) {
-		this.vechileId = vechileId;
-	}
 
-	public BigInteger getVechileId() {
-		return this.vechileId;
-	}
 
 	public void setVehicleNumber(String vehicleNumber) {
 		this.vehicleNumber = vehicleNumber;
@@ -77,7 +80,7 @@ public class VehicleDetails {
 	public String toString() {
 		StringBuffer sb = new StringBuffer();
 		sb.append("[");
-		sb.append(vechileId);
+		sb.append(vehicleId);
 		sb.append("]:");
 		sb.append(vehicleNumber);
 		sb.append("|");

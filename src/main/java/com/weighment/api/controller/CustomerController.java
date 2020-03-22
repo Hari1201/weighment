@@ -18,6 +18,7 @@ import com.weighment.api.model.CustomerDetails;
 import com.weighment.api.model.JsonResponse;
 import com.weighment.api.service.CustomerService;
 
+
 @RestController
 @RequestMapping("/api/customer")
 public class CustomerController {
@@ -30,15 +31,15 @@ public class CustomerController {
 	public JsonResponse save(@RequestBody CustomerDetails customerDetails) {
 		try {
 		      
-			Optional<CustomerDetails> employee = Optional.ofNullable(customerDetails);
+			Optional<CustomerDetails> customer = Optional.ofNullable(customerDetails);
 			Optional<String> name = Optional.ofNullable(customerDetails.getCustomerName());
 			Optional<String> phone = Optional.ofNullable(customerDetails.getCustomerPhone());
 
-			if(employee.isEmpty()) {
+			if(!customer.isPresent()) {
 				return new JsonResponse(Boolean.FALSE,"Please enter customer details!!!");
-			}else if(name.isEmpty()) {
+			}else if(!name.isPresent()) {
 				return new JsonResponse(Boolean.FALSE,"Please select customer!!!");
-			} else if (!phone.isEmpty()) {
+			} else if (phone.isPresent()) {
 				Pattern pattern = Pattern.compile("\\d{10}");
 				Matcher matcher = pattern.matcher(customerDetails.getCustomerPhone());
 				if (!matcher.matches()) {
