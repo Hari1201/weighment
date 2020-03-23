@@ -29,6 +29,19 @@ public class WeighmentEntryDetails {
     private BigInteger vehicleId;
 
     private BigInteger customerId;
+    
+	private BigInteger tokenId;;
+
+    
+    public BigInteger getTokenId() {
+		return tokenId;
+	}
+
+	public void setTokenId(BigInteger tokenId) {
+		this.tokenId = tokenId;
+	}
+
+
 
     public WeighmentEntryDetails()
     {

@@ -19,7 +19,10 @@ public class WeighmentEntryDetailsEntity implements Serializable
     @Column(name="wei_id", nullable=false)
     private BigInteger       weiId        ;
 
-    @Column(name="gross_weight", nullable=false)
+	@Column(name="token_no", nullable=false)
+    private BigInteger       tokenId;;
+
+	@Column(name="gross_weight", nullable=false)
     private BigDecimal grossWeight  ;
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -51,6 +54,17 @@ public class WeighmentEntryDetailsEntity implements Serializable
 
 	@Column(name="customer_id", nullable=false)
     private BigInteger       customerId   ;
+	
+    
+    public BigInteger getTokenId() {
+		return tokenId;
+	}
+
+	public void setTokenId(BigInteger tokenId) {
+		this.tokenId = tokenId;
+	}
+
+
   
     public BigInteger getProductId() {
 		return productId;

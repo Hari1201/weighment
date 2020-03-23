@@ -16,7 +16,7 @@ public interface VehicleDetailsRepository extends CrudRepository<VehicleDetailsE
 
 	VehicleDetailsEntity findByVehicleNumber(String vehicleNumber);
 	
-	VehicleDetailsEntity findByVechileId(BigInteger VehicleId);
+	VehicleDetailsEntity findByvehicleId(BigInteger VehicleId);
 	
 	@Query("select v from VehicleDetailsEntity v where v.vehicleNumber like %:vehicleName%")
 	List<VehicleDetailsEntity> getVehicles(@Param("vehicleName")String vehicleName);
