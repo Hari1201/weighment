@@ -23,14 +23,14 @@ CREATE TABLE IF NOT EXISTS `customer_details` (
   `created_date` datetime NOT NULL,
   `updated_date` datetime DEFAULT NULL,
   PRIMARY KEY (`customer_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table weighment_db.customer_details: ~3 rows (approximately)
 /*!40000 ALTER TABLE `customer_details` DISABLE KEYS */;
 INSERT INTO `customer_details` (`customer_id`, `customer_name`, `customer_phone`, `created_date`, `updated_date`) VALUES
-	(5, 'HARI1', '000000', '2020-03-09 22:24:17', '2020-03-10 23:29:29'),
-	(6, 'HHH', '123456789', '2020-03-10 23:45:06', NULL),
-	(7, 'HHeeH', '123456789', '2020-03-11 01:07:39', NULL);
+	(8, 'Usha Transport', '7358687731', '2020-03-22 21:14:42', '2020-03-22 21:14:55'),
+	(9, 'Sandhya Transport', '9940292523', '2020-03-22 21:48:52', NULL),
+	(11, 'jks', '9790747337', '2020-03-22 22:45:47', NULL);
 /*!40000 ALTER TABLE `customer_details` ENABLE KEYS */;
 
 
@@ -42,35 +42,38 @@ CREATE TABLE IF NOT EXISTS `product_details` (
   `created_date` datetime NOT NULL,
   `updated_date` datetime DEFAULT NULL,
   PRIMARY KEY (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
--- Dumping data for table weighment_db.product_details: ~3 rows (approximately)
+-- Dumping data for table weighment_db.product_details: ~5 rows (approximately)
 /*!40000 ALTER TABLE `product_details` DISABLE KEYS */;
 INSERT INTO `product_details` (`product_id`, `product_name`, `product_rate`, `created_date`, `updated_date`) VALUES
-	(1, 'sand', '1000', '2020-03-09 14:04:01', NULL),
-	(2, 'jalli', '500', '2020-03-09 14:04:22', NULL),
-	(3, 'Msand', NULL, '2020-03-09 14:04:36', NULL);
+	(8, 'SAND', '', '2020-03-22 21:16:13', '2020-03-22 23:14:26'),
+	(9, '20mm', '', '2020-03-22 22:23:14', '2020-03-22 23:14:36'),
+	(10, 'wm/sand', '850', '2020-03-22 22:46:03', '2020-03-22 22:47:03'),
+	(11, 'YR6YTR', 'RTYRTY', '2020-03-22 23:00:32', NULL),
+	(12, '54756756', '', '2020-03-22 23:10:41', '2020-03-22 23:11:18');
 /*!40000 ALTER TABLE `product_details` ENABLE KEYS */;
 
 
 -- Dumping structure for table weighment_db.vehicle_details
 CREATE TABLE IF NOT EXISTS `vehicle_details` (
-  `vechile_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `vehicle_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `vehicle_number` varchar(50) NOT NULL,
   `vehicle_name` varchar(50) DEFAULT NULL,
   `tare_weight` decimal(10,0) NOT NULL,
   `updated_date` datetime DEFAULT NULL,
   `created_date` datetime NOT NULL,
-  PRIMARY KEY (`vechile_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`vehicle_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
--- Dumping data for table weighment_db.vehicle_details: ~4 rows (approximately)
+-- Dumping data for table weighment_db.vehicle_details: ~5 rows (approximately)
 /*!40000 ALTER TABLE `vehicle_details` DISABLE KEYS */;
-INSERT INTO `vehicle_details` (`vechile_id`, `vehicle_number`, `vehicle_name`, `tare_weight`, `updated_date`, `created_date`) VALUES
-	(1, 'TN11AB1928', 'TATA', 0, '2020-03-09 13:48:13', '2020-03-09 13:48:05'),
-	(2, 'TN22CZ1919', 'Leyland', 0, NULL, '2020-03-09 13:53:40'),
-	(3, 'TN23HD2928', 'TATA', 0, '2020-03-09 13:54:06', '2020-03-09 13:54:04'),
-	(4, 'TN45DF9393', NULL, 0, NULL, '2020-03-09 13:54:29');
+INSERT INTO `vehicle_details` (`vehicle_id`, `vehicle_number`, `vehicle_name`, `tare_weight`, `updated_date`, `created_date`) VALUES
+	(8, 'TN11CZ1919', 'TATA', 15, '2020-03-24 02:53:39', '2020-03-22 21:15:32'),
+	(9, 'TN22AB9228', 'TATA', 4880, '2020-03-22 23:15:04', '2020-03-22 22:23:49'),
+	(10, 'TN11U8663', NULL, 4870, NULL, '2020-03-22 22:47:25'),
+	(11, 'RYRY', '', 657567, NULL, '2020-03-22 23:01:12'),
+	(12, 'HFHDFHD', 'FHFGHFGH', 45454, NULL, '2020-03-22 23:01:50');
 /*!40000 ALTER TABLE `vehicle_details` ENABLE KEYS */;
 
 
@@ -87,72 +90,35 @@ CREATE TABLE IF NOT EXISTS `weighment_entry_details` (
   `amount` decimal(10,0) NOT NULL,
   `pay_mode` varchar(20) NOT NULL,
   `created_date` datetime NOT NULL,
+  `token_no` bigint(20) NOT NULL,
   PRIMARY KEY (`wei_id`),
   KEY `FK2_customer` (`customer_id`),
   KEY `FK3_product` (`product_id`),
-  KEY `FK3_vehicle` (`vehicle_id`),
-  CONSTRAINT `FK2_customer` FOREIGN KEY (`customer_id`) REFERENCES `customer_details` (`customer_id`),
-  CONSTRAINT `FK3_product` FOREIGN KEY (`product_id`) REFERENCES `product_details` (`product_id`),
-  CONSTRAINT `FK3_vehicle` FOREIGN KEY (`vehicle_id`) REFERENCES `vehicle_details` (`vechile_id`),
-  CONSTRAINT `FKk8q68grarb9uptyjfrrrg1jcq` FOREIGN KEY (`product_id`) REFERENCES `product_details` (`product_id`),
-  CONSTRAINT `FKp0j0c77kssi78mrpr4v705c7e` FOREIGN KEY (`vehicle_id`) REFERENCES `vehicle_details` (`vechile_id`),
-  CONSTRAINT `FKpbeydw9t6qeq7mgkrgsgrkqo` FOREIGN KEY (`customer_id`) REFERENCES `customer_details` (`customer_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=latin1;
+  KEY `FK3_vehicle` (`vehicle_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=97 DEFAULT CHARSET=latin1;
 
--- Dumping data for table weighment_db.weighment_entry_details: ~51 rows (approximately)
+-- Dumping data for table weighment_db.weighment_entry_details: ~19 rows (approximately)
 /*!40000 ALTER TABLE `weighment_entry_details` DISABLE KEYS */;
-INSERT INTO `weighment_entry_details` (`wei_id`, `vehicle_id`, `customer_id`, `product_id`, `gross_weight`, `gross_date`, `net_weight`, `rate`, `amount`, `pay_mode`, `created_date`) VALUES
-	(1, 1, 5, 2, 34324, '2020-03-14 00:48:09', 32323, 32, 32322, 'AMOUNT', '2020-03-14 00:48:35'),
-	(2, 1, 5, 1, 534534, '2020-03-14 17:50:01', 45345, 2, 11, 'AMOUNT', '2020-03-14 17:52:19'),
-	(3, 1, 5, 1, 534534, '2020-03-14 17:50:01', 45345, 2, 11, 'AMOUNT', '2020-03-14 17:54:11'),
-	(4, 1, 5, 1, 534534, '2020-03-14 17:50:01', 45345, 2, 11, 'AMOUNT', '2020-03-14 17:55:44'),
-	(5, 1, 5, 1, 0, '2020-03-14 17:50:01', 45345, 2, 11, 'AMOUNT', '2020-03-14 18:35:27'),
-	(6, 1, 5, 1, 0, '2020-03-14 17:50:01', 45345, 2, 11, 'AMOUNT', '2020-03-14 18:37:27'),
-	(7, 1, 5, 1, 1, '2020-03-13 17:50:01', 45345, 2, 11, 'AMOUNT', '2020-03-14 18:54:36'),
-	(8, 1, 5, 1, 1, '2020-03-13 17:50:01', 45345, 2, 11, 'AMOUNT', '2020-03-14 19:04:11'),
-	(9, 1, 5, 1, 1, '2020-03-13 17:50:01', 45345, 2, 23452534, 'AMOUNT', '2020-03-14 19:04:33'),
-	(10, 1, 5, 1, 1, '2020-03-13 17:50:01', 45345, 2, 23452534, 'AMOUNT', '2020-03-14 19:36:19'),
-	(11, 1, 5, 1, 1, '2020-03-13 17:50:01', 45345, 2, 23452534, 'AMOUNT', '2020-03-14 19:38:26'),
-	(15, 1, 5, 1, 1, '2020-03-13 17:50:01', 45345, 2, 23452534, 'AMOUNT', '2020-03-14 19:56:17'),
-	(16, 1, 5, 1, 1, '2020-03-13 17:50:01', 45345, 2, 23452534, 'AMOUNT', '2020-03-14 19:59:26'),
-	(17, 1, 5, 1, 1, '2020-03-13 17:50:01', 45345, 2, 23452534, 'AMOUNT', '2020-03-14 19:59:39'),
-	(18, 1, 5, 1, 1, '2020-03-13 17:50:01', 45345, 2, 23452534, 'AMOUNT', '2020-03-14 19:59:45'),
-	(19, 1, 5, 1, 1, '2020-03-13 17:50:01', 45345, 2, 23452534, 'AMOUNT', '2020-03-14 20:00:10'),
-	(20, 1, 5, 1, 1, '2020-03-13 17:50:01', 45345, 2, 23452534, 'AMOUNT', '2020-03-14 20:00:51'),
-	(23, 1, 5, 1, 1, '2020-03-13 17:50:01', 45345, 2, 23452534, 'AMOUNT', '2020-03-14 20:11:09'),
-	(24, 1, 7, 1, 10, '2020-03-14 21:26:22', 2, 34353, 10, 'CREDIT BILL', '2020-03-14 21:28:07'),
-	(25, 1, 7, 1, 10, '2020-03-14 21:26:22', 2, 34353, 10, 'CREDIT BILL', '2020-03-14 21:30:17'),
-	(26, 1, 7, 1, 10, '2020-03-14 21:26:22', 2, 34353, 10, 'CREDIT BILL', '2020-03-14 21:30:18'),
-	(27, 1, 7, 1, 10, '2020-03-14 21:26:22', 2, 34353, 10, 'CREDIT BILL', '2020-03-14 21:31:02'),
-	(28, 1, 7, 1, 10, '2020-03-14 21:26:22', 2, 34353, 10, 'CREDIT BILL', '2020-03-14 21:33:35'),
-	(29, 1, 7, 1, 10, '2020-03-14 21:26:22', 2, 34353, 10, 'CREDIT BILL', '2020-03-14 21:38:04'),
-	(31, 1, 7, 1, 10, '2020-03-14 21:26:22', 2, 34353, 10, 'CREDIT BILL', '2020-03-14 21:40:32'),
-	(32, 1, 7, 1, 10, '2020-03-14 21:26:22', 2, 34353, 10, 'CREDIT BILL', '2020-03-14 21:43:05'),
-	(33, 1, 7, 1, 10, '2020-03-14 21:26:22', 2, 34353, 10, 'CREDIT BILL', '2020-03-14 21:43:52'),
-	(34, 1, 7, 1, 10, '2020-03-14 21:26:22', 2, 34353, 10, 'CREDIT BILL', '2020-03-14 21:45:03'),
-	(35, 1, 7, 1, 10, '2020-03-14 21:26:22', 2, 34353, 10, 'CREDIT BILL', '2020-03-14 21:50:46'),
-	(37, 1, 7, 1, 10, '2020-03-14 21:26:22', 2, 34353, 10, 'CREDIT BILL', '2020-03-14 21:52:32'),
-	(38, 1, 7, 1, 10, '2020-03-14 21:26:22', 2, 34353, 10, 'CREDIT BILL', '2020-03-14 21:54:09'),
-	(39, 1, 7, 1, 10, '2020-03-14 21:26:22', 2, 34353, 10, 'CREDIT BILL', '2020-03-14 21:55:45'),
-	(46, 1, 7, 1, 10, '2020-03-14 21:26:22', 2, 34353, 1212, 'CREDIT BILL', '2020-03-14 22:04:43'),
-	(56, 1, 7, 1, 10, '2020-03-14 21:26:22', 2, 34353, 1212, 'CREDIT BILL', '2020-03-14 22:55:14'),
-	(57, 1, 7, 1, 10, '2020-03-14 21:26:22', 2, 34353, 1212, 'CREDIT BILL', '2020-03-14 22:55:55'),
-	(58, 1, 5, 1, 56, '2020-03-20 00:38:20', 5405, 11, 6760, 'AMOUNT', '2020-03-20 00:39:13'),
-	(59, 1, 5, 1, 56, '2020-03-20 00:38:20', 5405, 11, 6760, 'AMOUNT', '2020-03-20 00:41:13'),
-	(60, 1, 5, 1, 56, '2020-03-20 00:38:20', 5405, 11, 6760, 'AMOUNT', '2020-03-20 00:43:08'),
-	(61, 1, 5, 1, 56, '2020-03-20 00:38:20', 5405, 11, 6760, 'AMOUNT', '2020-03-20 00:49:32'),
-	(62, 1, 5, 1, 56, '2020-03-20 00:38:20', 5405, 11, 6760, 'AMOUNT', '2020-03-20 00:51:59'),
-	(63, 1, 5, 1, 56, '2020-03-20 00:38:20', 5405, 11, 6760, 'AMOUNT', '2020-03-20 00:52:49'),
-	(64, 1, 5, 1, 56, '2020-03-20 00:38:20', 5405, 11, 6760, 'AMOUNT', '2020-03-20 01:03:14'),
-	(65, 1, 5, 1, 56, '2020-03-20 00:38:20', 5405, 11, 6760, 'AMOUNT', '2020-03-20 01:08:09'),
-	(66, 1, 5, 1, 56, '2020-03-20 00:38:20', 5405, 11, 6760, 'AMOUNT', '2020-03-20 01:12:24'),
-	(67, 1, 5, 1, 56, '2020-03-20 00:38:20', 5405, 11, 6760, 'AMOUNT', '2020-03-20 01:15:25'),
-	(68, 1, 5, 1, 56, '2020-03-20 00:38:20', 5405, 11, 6760, 'AMOUNT', '2020-03-20 01:23:38'),
-	(69, 1, 5, 1, 56, '2020-03-20 00:38:20', 5405, 11, 6760, 'AMOUNT', '2020-03-20 01:25:41'),
-	(70, 1, 5, 1, 56, '2020-03-20 00:38:20', 5405, 11, 6760, 'AMOUNT', '2020-03-20 01:27:09'),
-	(71, 1, 5, 1, 56, '2020-03-20 00:38:20', 5405, 11, 6760, 'AMOUNT', '2020-03-20 01:28:27'),
-	(72, 1, 5, 1, 56, '2020-03-20 00:38:20', 5405, 11, 6760, 'AMOUNT', '2020-03-20 01:43:53'),
-	(73, 1, 5, 1, 56, '2020-03-20 00:38:20', 5405, 11, 6760, 'AMOUNT', '2020-03-20 01:47:19');
+INSERT INTO `weighment_entry_details` (`wei_id`, `vehicle_id`, `customer_id`, `product_id`, `gross_weight`, `gross_date`, `net_weight`, `rate`, `amount`, `pay_mode`, `created_date`, `token_no`) VALUES
+	(78, 8, 8, 8, 30, '2020-03-10 05:30:00', 15, 20, 300, 'CREDIT BILL', '2020-03-22 21:18:14', 0),
+	(79, 8, 8, 9, 458, '2020-03-12 05:30:00', 443, 48, 21264, 'CREDIT BILL', '2020-03-22 22:37:31', 0),
+	(80, 8, 8, 9, 87, '2020-03-05 05:30:00', 72, 1, 72, 'CREDIT BILL', '2020-03-22 22:40:09', 0),
+	(81, 8, 8, 9, 895, '2020-03-06 05:30:00', 880, 8, 7040, 'CREDIT BILL', '2020-03-22 22:42:55', 0),
+	(82, 8, 8, 9, 895, '2020-03-06 05:30:00', 880, 8, 7040, 'CREDIT BILL', '2020-03-22 22:44:57', 0),
+	(83, 10, 11, 10, 13280, '2020-03-22 05:30:00', 8410, 1, 7149, 'CREDIT BILL', '2020-03-22 22:48:07', 0),
+	(84, 8, 8, 8, 25, '2020-03-11 05:30:00', 10, 4, 40, 'CREDIT BILL', '2020-03-23 09:47:09', 0),
+	(85, 8, 8, 11, 47, '2020-03-12 05:30:00', 32, 4, 128, 'CREDIT BILL', '2020-03-23 10:10:00', 0),
+	(86, 8, 8, 11, 78, '2020-02-12 03:06:00', 63, 4, 252, 'CREDIT BILL', '2020-03-23 10:28:15', 0),
+	(87, 8, 8, 9, 122, '2020-03-04 03:56:00', 107, 2, 214, 'CREDIT BILL', '2020-03-23 14:04:36', 222),
+	(88, 8, 8, 11, 45, '2020-03-18 04:57:00', 30, 78, 2340, 'CREDIT BILL', '2020-03-24 13:45:31', 78787887),
+	(89, 8, 8, 11, 45, '2020-03-05 04:57:00', 30, 78, 2340, 'CREDIT BILL', '2020-03-24 13:49:10', 78787887),
+	(90, 8, 8, 11, 45, '2020-03-13 04:57:00', 30, 78, 2340, 'CREDIT BILL', '2020-03-24 13:54:54', 78787887),
+	(91, 8, 8, 9, 565, '2020-03-05 03:58:00', 550, 5, 2750, 'CREDIT BILL', '2020-03-24 14:25:07', 45),
+	(92, 10, 11, 9, 12390, '2020-03-17 07:45:00', 7520, 1, 4512, 'CREDIT BILL', '2020-03-24 14:30:32', 325),
+	(93, 8, 11, 9, 67567, '2020-03-05 02:59:00', 67552, 5, 337760, 'CREDIT BILL', '2020-03-24 14:49:00', 56),
+	(94, 8, 11, 9, 56756, '2020-03-04 02:58:00', 56741, 5, 283705, 'AMOUNT', '2020-03-24 14:54:52', 5767),
+	(95, 8, 8, 9, 545, '2020-03-05 01:58:00', 530, 454, 240620, 'CREDIT BILL', '2020-03-24 15:06:21', 454),
+	(96, 9, 9, 11, 5000, '2020-03-11 01:01:00', 120, 5, 600, 'AMOUNT', '2020-03-24 22:42:16', 565656);
 /*!40000 ALTER TABLE `weighment_entry_details` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
