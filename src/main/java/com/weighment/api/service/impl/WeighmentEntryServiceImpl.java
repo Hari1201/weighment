@@ -112,7 +112,7 @@ public class WeighmentEntryServiceImpl implements WeighmentEntryService {
 			  }*/
 				try {
 					//exportPdfFile(savedEntity.getWeiId().longValue(), Constants.PRINTER);
-					exportPdfFile(savedEntity);
+					//exportPdfFile(savedEntity);
 				} catch (Exception e) {
 					throw  e;
 				}

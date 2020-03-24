@@ -18,7 +18,7 @@ public class WebConfig extends  WebMvcAutoConfiguration {
 
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedMethods("GET", "POST", "PUT", "DELETE").allowedOrigins(devUrl, prodUrl);
+                .allowedMethods("GET", "POST", "PUT", "DELETE").allowedOrigins(devUrl, prodUrl).allowedHeaders("*");
     }
     
 /*    @Bean
