@@ -46,6 +46,7 @@ public class VehicleServiceImpl implements VehicleService {
 				}
 			} else {
 				isVehicleExists.setVehicleNumber(vehicleDetail.getVehicleNumber());
+				isVehicleExists.setVehicleName(vehicleDetail.getVehicleName());
 				isVehicleExists.setTareWeight(vehicleDetail.getTareWeight());
 				isVehicleExists.setUpdatedDate(new Date());
 				VehicleDetailsEntity savedEntity = vehicleDetailsRepository.save(isVehicleExists);

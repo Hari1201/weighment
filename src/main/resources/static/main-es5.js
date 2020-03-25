@@ -63,7 +63,18 @@ module.exports = "<div class=\"panel panel-primary\">\n  <div class=\"panel-head
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<form (ngSubmit)=\"weighmentEntry()\" name=\"form\" autocomplete=\"off\">\n  <div class=\"form-group\">\n    <div class=\"row\">\n      <div class=\"col-sm-2\">\n        <label for=\"name\">Vehichle No</label><span class=\"required\">*</span>\n      </div>\n      <div class=\"col-sm-2\">\n        <input\n          class=\"form-control\"\n          type=\"text\"\n          list=\"vehichleList\"\n          id=\"vehicleNumber\"\n          (keyup)=\"onVehicleChanged($event)\"\n        />\n        <datalist id=\"vehichleList\">\n          <select>\n            <option\n              *ngFor=\"let vehicle of vehicles\"\n              [value]=\"vehicle.vehicleNumber\"\n            ></option>\n          </select>\n        </datalist>\n      </div>\n      <div class=\"col-sm-0.5\">\n        <label for=\"name\">Customer</label><span class=\"required\">*</span>\n      </div>\n      <div class=\"col-sm-3\">\n        <input\n          class=\"form-control\"\n          type=\"text\"\n          list=\"customerList\"\n          id=\"customerName\"\n          (keyup)=\"onCustomerChanged($event)\"\n        />\n        <datalist id=\"customerList\">\n          <select>\n            <option\n              *ngFor=\"let customer of customers\"\n              [value]=\"customer.customerName\"\n            ></option>\n          </select>\n        </datalist>\n      </div>\n      <div class=\"col-sm-0.5\">\n        <label for=\"name\">Product</label><span class=\"required\">*</span>\n      </div>\n      <div class=\"col-sm-3\">\n        <input\n          class=\"form-control\"\n          type=\"text\"\n          list=\"productList\"\n          id=\"productName\"\n          (keyup)=\"onProductChanged($event)\"\n        />\n        <datalist id=\"productList\">\n          <select>\n            <option\n              *ngFor=\"let product of products\"\n              [value]=\"product.productName\"\n            ></option>\n          </select>\n        </datalist>\n      </div>\n    </div>\n    <div class=\"row mt-5\"></div>\n    <div class=\"row\">\n      <div class=\"col-sm-2\">\n        <label for=\"name\"\n          ><u><b>Tare Weight</b></u></label\n        >\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-sm-2\">\n        <label for=\"name\">Weight</label><span class=\"required\">*</span>\n      </div>\n      <div class=\"col-sm-2\">\n        <input\n          type=\"text\"\n          class=\"form-control\"\n          id=\"tareWeight\"\n          required\n          name=\"tareWeight\"\n          disabled\n          [(ngModel)]=\"weighmententry.tareWeight\"\n        />\n      </div>\n      <div class=\"col-sm-1\">\n        <label for=\"name\">Date</label><span class=\"required\">*</span>\n      </div>\n      <div class=\"col-sm-3\">\n        <input\n          type=\"text\"\n          class=\"form-control\"\n          id=\"tareDate\"\n          required\n          disabled\n          name=\"tareDate\"\n          [ngModel]=\"weighmententry.tareDate | date: 'yyyy-MM-dd'\"\n          (ngModelChange)=\"weighmententry.tareDate = $event\"\n        />\n      </div>\n      <div class=\"col-sm-0.5\">\n        <label for=\"name\">Time</label><span class=\"required\">*</span>\n      </div>\n      <div class=\"col-sm-3\">\n        <input\n          type=\"text\"\n          class=\"form-control\"\n          id=\"tareTime\"\n          required\n          name=\"tareTime\"\n          disabled\n          [ngModel]=\"weighmententry.tareTime | date: 'HH:mm:ss'\"\n          (ngModelChange)=\"weighmententry.tareTime = $event\"\n        />\n      </div>\n    </div>\n    <div class=\"row mt-5\"></div>\n    <div class=\"row\">\n      <div class=\"col-sm-2\">\n        <label for=\"name\"\n          ><u><b>Gross Weight</b></u></label\n        >\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-sm-2\">\n        <label for=\"name\">Weight</label><span class=\"required\">*</span>\n      </div>\n      <div class=\"col-sm-2\">\n        <input\n          type=\"number\"\n          class=\"form-control\"\n          id=\"grossWeight\"\n          required\n          name=\"\"\n          placeholder=\"\"\n          (change)=\"onChangeGrossWt($event)\"\n        />\n      </div>\n      <div class=\"col-sm-1\">\n        <label for=\"name\">Date</label><span class=\"required\">*</span>\n      </div>\n      <div class=\"col-sm-3\">\n        <input\n          type=\"date\"\n          class=\"form-control\"\n          id=\"grossDate\"\n          required\n          name=\"grossDate\"\n          [(ngModel)]=\"weighmententry.grossDate\"\n        />\n      </div>\n      <div class=\"col-sm-0.5\">\n        <label for=\"name\">Time</label><span class=\"required\">*</span>\n      </div>\n      <div class=\"col-sm-3\">\n        <input\n          type=\"time\"\n          class=\"form-control\"\n          id=\"grossTime\"\n          required\n          name=\"grossTime\"\n          [(ngModel)]=\"weighmententry.grossTime\"\n        />\n      </div>\n    </div>\n    <div class=\"row mt-5\"></div>\n    <div class=\"row\">\n      <div class=\"col-sm-2\">\n        <label for=\"name\"\n          ><u><b>Net Weight</b></u></label\n        >\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-sm-2\">\n        <label for=\"name\">Weight</label><span class=\"required\">*</span>\n      </div>\n      <div class=\"col-sm-2\">\n        <input\n          type=\"text\"\n          class=\"form-control\"\n          id=\"netWeight\"\n          required\n          name=\"netWeight\"\n          disabled\n          [(ngModel)]=\"weighmententry.netWeight\"\n        />\n      </div>\n      <label for=\"name\"><i class=\"fa fa-close\" aria-hidden=\"true\"></i></label>\n      <div class=\"col-sm-1\">\n        <label for=\"name\">Rate</label><span class=\"required\">*</span>\n      </div>\n      <div class=\"col-sm-2\">\n        <input\n          type=\"number\"\n          class=\"form-control\"\n          id=\"rate\"\n          required\n          name=\"\"\n          placeholder=\"\"\n          (change)=\"onChangeRate($event)\"\n        />\n      </div>\n      <label for=\"name\"><b>=</b></label>\n      <div class=\"col-sm-2\">\n        <label for=\"name\">Total Amount</label><span class=\"required\">*</span>\n      </div>\n      <div class=\"col-sm-2.5\">\n        <input\n          type=\"text\"\n          class=\"form-control\"\n          id=\"amount\"\n          required\n          name=\"amount\"\n          disabled\n          [(ngModel)]=\"weighmententry.amount\"\n        />\n      </div>\n    </div>\n    <div class=\"row mt-5\"></div>\n    <div class=\"row\">\n      <div class=\"col-sm-2\">\n        <label for=\"name\">PayMent Mode</label><span class=\"required\">*</span>\n      </div>\n      <div class=\"col-sm-2\">\n        <select\n          class=\"form-control\"\n          (change)=\"paymentMode($event)\"\n          [value]=\"creditBill\"\n          id=\"payMode\"\n        >\n          <option value=\"CREDIT BILL\">CREDIT BILL</option>\n          <option value=\"AMOUNT\">AMOUNT</option>\n        </select>\n      </div>\n      <div class=\"col-sm-2\">\n        <label for=\"name\">Token Number</label><span class=\"required\">*</span>\n      </div>\n      <div class=\"col-sm-2.5\">\n        <input\n          type=\"text\"\n          class=\"form-control\"\n          id=\"tokenId\"\n          required\n          name=\"tokenId\"\n          [(ngModel)]=\"weighmententry.tokenId\"\n        />\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-sm-2\"></div>\n      <div class=\"col-sm-2\"></div>\n      <div class=\"col-sm-2\"></div>\n      <div class=\"col-sm-2\"></div>\n      <div class=\"col-sm-2\"></div>\n      <div class=\"col-sm-2\">\n        <button type=\"submit\" class=\"btn btn-success\">\n          Save\n        </button>\n      </div>\n    </div>\n  </div>\n</form>\n"
+module.exports = "<div\n  class=\"alert alert-success alert-dismissible fade show\"\n  *ngIf=\"this.alert && this.issuccess\"\n  role=\"alert\"\n  [hidden]=\"this.hide\"\n>\n  <strong>{{ this.showMsg }}</strong>\n  <button\n    type=\"button\"\n    class=\"close\"\n    data-dismiss=\"alert\"\n    (click)=\"closeAlert()\"\n  >\n    &times;\n  </button>\n</div>\n\n<div\n  class=\"alert alert-danger alert-dismissible fade show\"\n  *ngIf=\"this.alert && !this.issuccess\"\n  role=\"alert\"\n  [hidden]=\"this.hide\"\n>\n  <strong>{{ this.showMsg }}</strong>\n  <button\n    type=\"button\"\n    class=\"close\"\n    data-dismiss=\"alert\"\n    (click)=\"closeAlert()\"\n  >\n    &times;\n  </button>\n</div>\n\n<form\n  (ngSubmit)=\"weighmentEntry()\"\n  #myForm=\"ngForm\"\n  name=\"form\"\n  autocomplete=\"off\"\n>\n  <div class=\"form-group\">\n    <div class=\"row\">\n      <div class=\"col-sm-2\">\n        <label for=\"name\">Vehichle No</label><span class=\"required\">*</span>\n      </div>\n      <div class=\"col-sm-2\">\n        <input\n          class=\"form-control\"\n          type=\"text\"\n          list=\"vehichleList\"\n          id=\"vehicleNumber\"\n          (input)=\"onVehicleChanged($event.target.value)\"\n          name=\"vehicleNumber\"\n          required\n        />\n        <datalist id=\"vehichleList\">\n          <select>\n            <option\n              *ngFor=\"let vehicle of vehicles\"\n              [value]=\"vehicle.vehicleNumber\"\n            ></option>\n          </select>\n        </datalist>\n      </div>\n      <div class=\"col-sm-0.5\">\n        <label for=\"name\">Customer</label><span class=\"required\">*</span>\n      </div>\n      <div class=\"col-sm-3\">\n        <input\n          class=\"form-control\"\n          type=\"text\"\n          list=\"customerList\"\n          id=\"customerName\"\n          (keyup)=\"onCustomerChanged($event)\"\n        />\n        <datalist id=\"customerList\">\n          <select>\n            <option\n              *ngFor=\"let customer of customers\"\n              [value]=\"customer.customerName\"\n            ></option>\n          </select>\n        </datalist>\n      </div>\n      <div class=\"col-sm-0.5\">\n        <label for=\"name\">Product</label><span class=\"required\">*</span>\n      </div>\n      <div class=\"col-sm-3\">\n        <input\n          class=\"form-control\"\n          type=\"text\"\n          list=\"productList\"\n          id=\"productName\"\n          (keyup)=\"onProductChanged($event)\"\n        />\n        <datalist id=\"productList\">\n          <select>\n            <option\n              *ngFor=\"let product of products\"\n              [value]=\"product.productName\"\n            ></option>\n          </select>\n        </datalist>\n      </div>\n    </div>\n    <div class=\"row mt-5\"></div>\n    <div class=\"row\">\n      <div class=\"col-sm-2\">\n        <label for=\"name\"\n          ><u><b>Tare Weight</b></u></label\n        >\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-sm-2\">\n        <label for=\"name\">Weight</label><span class=\"required\">*</span>\n      </div>\n      <div class=\"col-sm-2\">\n        <input\n          type=\"text\"\n          class=\"form-control\"\n          id=\"tareWeight\"\n          required\n          name=\"tareWeight\"\n          disabled\n          [(ngModel)]=\"weighmententry.tareWeight\"\n        />\n      </div>\n      <div class=\"col-sm-1\">\n        <label for=\"name\">Date</label><span class=\"required\">*</span>\n      </div>\n      <div class=\"col-sm-3\">\n        <input\n          type=\"text\"\n          class=\"form-control\"\n          id=\"tareDate\"\n          required\n          disabled\n          name=\"tareDate\"\n          [ngModel]=\"weighmententry.tareDate | date: 'yyyy-MM-dd'\"\n          (ngModelChange)=\"weighmententry.tareDate = $event\"\n        />\n      </div>\n      <div class=\"col-sm-0.5\">\n        <label for=\"name\">Time</label><span class=\"required\">*</span>\n      </div>\n      <div class=\"col-sm-3\">\n        <input\n          type=\"text\"\n          class=\"form-control\"\n          id=\"tareTime\"\n          required\n          name=\"tareTime\"\n          disabled\n          [ngModel]=\"weighmententry.tareTime | date: 'HH:mm:ss'\"\n          (ngModelChange)=\"weighmententry.tareTime = $event\"\n        />\n      </div>\n    </div>\n    <div class=\"row mt-5\"></div>\n    <div class=\"row\">\n      <div class=\"col-sm-2\">\n        <label for=\"name\"\n          ><u><b>Gross Weight</b></u></label\n        >\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-sm-2\">\n        <label for=\"name\">Weight</label><span class=\"required\">*</span>\n      </div>\n      <div class=\"col-sm-2\">\n        <input\n          type=\"number\"\n          class=\"form-control\"\n          id=\"grossWeight\"\n          required\n          name=\"\"\n          placeholder=\"\"\n          (change)=\"onChangeGrossWt($event)\"\n        />\n      </div>\n      <div class=\"col-sm-1\">\n        <label for=\"name\">Date</label><span class=\"required\">*</span>\n      </div>\n      <div class=\"col-sm-3\">\n        <input\n          type=\"date\"\n          class=\"form-control\"\n          id=\"grossDate\"\n          required\n          name=\"grossDate\"\n          [(ngModel)]=\"weighmententry.grossDate\"\n        />\n      </div>\n      <div class=\"col-sm-0.5\">\n        <label for=\"name\">Time</label><span class=\"required\">*</span>\n      </div>\n      <div class=\"col-sm-3\">\n        <input\n          type=\"time\"\n          class=\"form-control\"\n          id=\"grossTime\"\n          required\n          name=\"grossTime\"\n          [(ngModel)]=\"weighmententry.grossTime\"\n        />\n      </div>\n    </div>\n    <div class=\"row mt-5\"></div>\n    <div class=\"row\">\n      <div class=\"col-sm-2\">\n        <label for=\"name\"\n          ><u><b>Net Weight</b></u></label\n        >\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-sm-2\">\n        <label for=\"name\">Weight</label><span class=\"required\">*</span>\n      </div>\n      <div class=\"col-sm-2\">\n        <input\n          type=\"text\"\n          class=\"form-control\"\n          id=\"netWeight\"\n          required\n          name=\"netWeight\"\n          disabled\n          [(ngModel)]=\"weighmententry.netWeight\"\n        />\n      </div>\n      <label for=\"name\"><i class=\"fa fa-close\" aria-hidden=\"true\"></i></label>\n      <div class=\"col-sm-1\">\n        <label for=\"name\">Rate</label><span class=\"required\">*</span>\n      </div>\n      <div class=\"col-sm-2\">\n        <input\n          type=\"number\"\n          class=\"form-control\"\n          id=\"rate\"\n          required\n          name=\"\"\n          placeholder=\"\"\n          (change)=\"onChangeRate($event)\"\n        />\n      </div>\n      <label for=\"name\"><b>=</b></label>\n      <div class=\"col-sm-2\">\n        <label for=\"name\">Total Amount</label><span class=\"required\">*</span>\n      </div>\n      <div class=\"col-sm-2.5\">\n        <input\n          type=\"text\"\n          class=\"form-control\"\n          id=\"amount\"\n          required\n          name=\"amount\"\n          disabled\n          [(ngModel)]=\"weighmententry.amount\"\n        />\n      </div>\n    </div>\n    <div class=\"row mt-5\"></div>\n    <div class=\"row\">\n      <div class=\"col-sm-2\">\n        <label for=\"name\">PayMent Mode</label><span class=\"required\">*</span>\n      </div>\n      <div class=\"col-sm-2\">\n        <select\n          class=\"form-control\"\n          (change)=\"paymentMode($event)\"\n          [value]=\"creditBill\"\n          id=\"payMode\"\n        >\n          <option value=\"CREDIT BILL\">CREDIT BILL</option>\n          <option value=\"AMOUNT\">AMOUNT</option>\n        </select>\n      </div>\n      <div class=\"col-sm-2\">\n        <label for=\"name\">Token Number</label><span class=\"required\">*</span>\n      </div>\n      <div class=\"col-sm-2.5\">\n        <input\n          type=\"text\"\n          class=\"form-control\"\n          id=\"tokenId\"\n          required\n          name=\"tokenId\"\n          [(ngModel)]=\"weighmententry.tokenId\"\n        />\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col-sm-2\"></div>\n      <div class=\"col-sm-2\"></div>\n      <div class=\"col-sm-2\"></div>\n      <div class=\"col-sm-2\"></div>\n      <div class=\"col-sm-2\"></div>\n      <div class=\"col-sm-2\">\n        <button\n          type=\"submit\"\n          [disabled]=\"!myForm.form.valid\"\n          class=\"btn btn-success\"\n        >\n          Save\n        </button>\n      </div>\n    </div>\n  </div>\n</form>\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/login/login.component.html":
+/*!**********************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/login/login.component.html ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>login works!</p>\n<video autoplay muted loop id=\"myVideo\">\n  <source src=\"../src/assets/Ipad.mp4\" type=\"video/mp4\" />\n</video>\n"
 
 /***/ }),
 
@@ -85,7 +96,7 @@ module.exports = "<div class=\"panel panel-primary\">\n  <div class=\"panel-head
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div\n  class=\"alert alert-success alert-dismissible fade show\"\n  *ngIf=\"this.alert && this.issuccess\"\n  role=\"alert\"\n  [hidden]=\"this.hide\"\n>\n  <strong>{{ this.showMsg }}</strong>\n  <button\n    type=\"button\"\n    class=\"close\"\n    data-dismiss=\"alert\"\n    (click)=\"closeAlert()\"\n  >\n    &times;\n  </button>\n</div>\n\n<div\n  class=\"alert alert-danger alert-dismissible fade show\"\n  *ngIf=\"this.alert && !this.issuccess\"\n  role=\"alert\"\n  [hidden]=\"this.hide\"\n>\n  <strong>{{ this.showMsg }}</strong>\n  <button\n    type=\"button\"\n    class=\"close\"\n    data-dismiss=\"alert\"\n    (click)=\"closeAlert()\"\n  >\n    &times;\n  </button>\n</div>\n<h3>Create Product</h3>\n<div [hidden]=\"submitted\" style=\"width: 400px;\">\n  <form (ngSubmit)=\"createProduct()\" name=\"form\" autocomplete=\"off\">\n    <div class=\"form-group\">\n      <label for=\"name\">Product Name</label>\n      <span class=\"required\">*</span>\n      <input\n        type=\"text\"\n        class=\"form-control\"\n        id=\"productName\"\n        required\n        [(ngModel)]=\"product.productName\"\n        name=\"productName\"\n        #productName=\"ngModel\"\n        placeholder=\"Product Name\"\n      />\n      <div\n        *ngIf=\"\n          productName.invalid && (productName.dirty || productName.touched)\n        \"\n        class=\"alert alert-danger\"\n      >\n        <div *ngIf=\"productName.errors.required\">\n          Name is required.\n        </div>\n      </div>\n    </div>\n\n    <div class=\"form-group\">\n      <label for=\"name\">Product Rate</label>\n      <span class=\"required\">*</span>\n      <input\n        class=\"form-control\"\n        type=\"text\"\n        id=\"productRate\"\n        name=\"productRate\"\n        required\n        [(ngModel)]=\"product.productRate\"\n        #productRate=\"ngModel\"\n        placeholder=\"Product Rate\"\n      />\n      <div\n        *ngIf=\"\n          productRate.invalid && (productRate.dirty || productRate.touched)\n        \"\n        class=\"alert alert-danger\"\n      >\n        <div *ngIf=\"productRate.errors.required\">\n          Rate is required.\n        </div>\n      </div>\n    </div>\n\n    <button\n      type=\"submit\"\n      *ngIf=\"this.submitFlag\"\n      [disabled]=\"product.productName == null && product.productRate == null\"\n      class=\"btn btn-success\"\n    >\n      Create\n    </button>\n    <button\n      *ngIf=\"!this.submitFlag\"\n      type=\"submit\"\n      [disabled]=\"product.productName == null && product.productRate == null\"\n      class=\"btn btn-success\"\n    >\n      Update\n    </button>\n  </form>\n</div>\n"
+module.exports = "<div\n  class=\"alert alert-success alert-dismissible fade show\"\n  *ngIf=\"this.alert && this.issuccess\"\n  role=\"alert\"\n  [hidden]=\"this.hide\"\n>\n  <strong>{{ this.showMsg }}</strong>\n  <button\n    type=\"button\"\n    class=\"close\"\n    data-dismiss=\"alert\"\n    (click)=\"closeAlert()\"\n  >\n    &times;\n  </button>\n</div>\n\n<div\n  class=\"alert alert-danger alert-dismissible fade show\"\n  *ngIf=\"this.alert && !this.issuccess\"\n  role=\"alert\"\n  [hidden]=\"this.hide\"\n>\n  <strong>{{ this.showMsg }}</strong>\n  <button\n    type=\"button\"\n    class=\"close\"\n    data-dismiss=\"alert\"\n    (click)=\"closeAlert()\"\n  >\n    &times;\n  </button>\n</div>\n<h3>Create Product</h3>\n<div [hidden]=\"submitted\" style=\"width: 400px;\">\n  <form (ngSubmit)=\"createProduct()\" name=\"form\" autocomplete=\"off\">\n    <div class=\"form-group\">\n      <label for=\"name\">Product Name</label>\n      <span class=\"required\">*</span>\n      <input\n        type=\"text\"\n        class=\"form-control\"\n        id=\"productName\"\n        required\n        [(ngModel)]=\"product.productName\"\n        name=\"productName\"\n        #productName=\"ngModel\"\n        placeholder=\"Product Name\"\n      />\n      <div\n        *ngIf=\"\n          productName.invalid && (productName.dirty || productName.touched)\n        \"\n        class=\"alert alert-danger\"\n      >\n        <div *ngIf=\"productName.errors.required\">\n          Name is required.\n        </div>\n      </div>\n    </div>\n\n    <div class=\"form-group\">\n      <label for=\"name\">Product Rate</label>\n      <span class=\"required\">*</span>\n      <input\n        class=\"form-control\"\n        type=\"text\"\n        id=\"productRate\"\n        name=\"productRate\"\n        required\n        [(ngModel)]=\"product.productRate\"\n        #productRate=\"ngModel\"\n        placeholder=\"Product Rate\"\n      />\n      <div\n        *ngIf=\"\n          productRate.invalid && (productRate.dirty || productRate.touched)\n        \"\n        class=\"alert alert-danger\"\n      >\n        <div *ngIf=\"productRate.errors.required\">\n          Rate is required.\n        </div>\n      </div>\n    </div>\n\n    <button\n      type=\"submit\"\n      *ngIf=\"this.submitFlag\"\n      [disabled]=\"product.productName == null || product.productRate == null\"\n      class=\"btn btn-success\"\n    >\n      Create\n    </button>\n    <button\n      *ngIf=\"!this.submitFlag\"\n      type=\"submit\"\n      [disabled]=\"product.productName == null || product.productRate == null\"\n      class=\"btn btn-success\"\n    >\n      Update\n    </button>\n  </form>\n</div>\n"
 
 /***/ }),
 
@@ -142,7 +153,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var routes = [
-    { path: "", redirectTo: "employee", pathMatch: "full" },
+    { path: "", redirectTo: "dashboard", pathMatch: "full" },
     { path: "customerlist", component: _customer_list_customer_list_component__WEBPACK_IMPORTED_MODULE_4__["CustomerListComponent"] },
     { path: "customer", component: _customer_component_customer_component_component__WEBPACK_IMPORTED_MODULE_3__["CustomerComponent"] },
     { path: "update/:id/:custName/:custPhone", component: _customer_component_customer_component_component__WEBPACK_IMPORTED_MODULE_3__["CustomerComponent"] },
@@ -242,6 +253,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _vehicle_list_vehicle_list_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./vehicle-list/vehicle-list.component */ "./src/app/vehicle-list/vehicle-list.component.ts");
 /* harmony import */ var _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./dashboard/dashboard.component */ "./src/app/dashboard/dashboard.component.ts");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
+
 
 
 
@@ -271,7 +284,8 @@ var AppModule = /** @class */ (function () {
                 _product_list_product_list_component__WEBPACK_IMPORTED_MODULE_11__["ProductListComponent"],
                 _vehicle_vehicle_component__WEBPACK_IMPORTED_MODULE_12__["VehicleComponent"],
                 _vehicle_list_vehicle_list_component__WEBPACK_IMPORTED_MODULE_13__["VehicleListComponent"],
-                _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_14__["DashboardComponent"]
+                _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_14__["DashboardComponent"],
+                _login_login_component__WEBPACK_IMPORTED_MODULE_16__["LoginComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -428,26 +442,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
+
 
 
 
 var CustomerService = /** @class */ (function () {
     function CustomerService(http) {
         this.http = http;
-        this.baseUrl = "http://localhost:9090/weighment/api/customer";
     }
     CustomerService.prototype.getCustomer = function (id) {
-        return this.http.get(this.baseUrl + "/" + id);
+        return this.http.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].baseUrl + ("/customer/" + id));
     };
     CustomerService.prototype.createCustomer = function (customer) {
         console.log("customer" + JSON.stringify(customer));
-        return this.http.post("" + this.baseUrl, customer);
+        return this.http.post(src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].baseUrl + "/customer", customer);
     };
     CustomerService.prototype.updateCustomer = function (value) {
-        return this.http.put("" + this.baseUrl, value);
+        return this.http.put(src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].baseUrl + "/customer", value);
     };
     CustomerService.prototype.deleteCustomer = function (id) {
-        return this.http.delete(this.baseUrl + "/" + id, {
+        return this.http.delete(src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].baseUrl + ("/customer/" + id), {
             responseType: "text"
         });
     };
@@ -595,17 +610,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
+
 
 
 
 var WeighmententryService = /** @class */ (function () {
     function WeighmententryService(http) {
         this.http = http;
-        this.baseUrl = "http://localhost:9090/weighment/api/weighmententry";
     }
     WeighmententryService.prototype.createWeighmententry = function (entry) {
         console.log("entry" + JSON.stringify(entry));
-        return this.http.post("" + this.baseUrl, entry);
+        return this.http.post(src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].baseUrl + "/weighmententry", entry);
     };
     WeighmententryService.ctorParameters = function () { return [
         { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
@@ -697,11 +713,22 @@ var DashboardComponent = /** @class */ (function () {
         this.customer = new _customer_component_customer__WEBPACK_IMPORTED_MODULE_5__["Customer"]();
         this.product = new _product_product__WEBPACK_IMPORTED_MODULE_6__["Product"]();
         this.weighmententry = new _Weighmententry__WEBPACK_IMPORTED_MODULE_4__["Weighmententry"]();
+        this.showMsg = "";
+        this.issuccess = false;
+        this.alert = false;
+        this.hide = false;
     }
     DashboardComponent.prototype.ngOnInit = function () { };
     DashboardComponent.prototype.onVehicleChanged = function ($event) {
         var _this = this;
         this.vehicle.vehicleNumber = (document.getElementById("vehicleNumber")).value;
+        console.log("this.vehicle.vehicleNumber" + this.vehicle.vehicleNumber);
+        if (this.vehicle.vehicleNumber === null ||
+            this.vehicle.vehicleNumber === "") {
+            this.weighmententry.tareWeight = null;
+            this.weighmententry.tareDate = null;
+            this.weighmententry.tareTime = null;
+        }
         this.vehicleService.getVehicle(this.vehicle.vehicleNumber).subscribe(function (result) {
             _this.vehicles = result["obj"];
             var stringify = JSON.parse(JSON.stringify(_this.vehicles));
@@ -769,15 +796,26 @@ var DashboardComponent = /** @class */ (function () {
             this.weighmententry.rate * this.weighmententry.netWeight;
     };
     DashboardComponent.prototype.weighmentEntry = function () {
+        var _this = this;
         this.weighmententry.grossDate = new Date(this.weighmententry.grossDate + " " + this.weighmententry.grossTime);
         console.log("Dhivya last" + JSON.stringify(this.weighmententry));
         this.weighmententryService
             .createWeighmententry(this.weighmententry)
             .subscribe(function (result) {
             console.log(result);
+            _this.showMsg = result["message"];
+            _this.issuccess = result["success"];
+            console.log(_this.showMsg);
+            console.log(_this.issuccess);
+            _this.alert = true;
+            _this.hide = false;
+            _this.weighmententry = new _Weighmententry__WEBPACK_IMPORTED_MODULE_4__["Weighmententry"]();
         }, function (error) {
             console.error(error);
         });
+    };
+    DashboardComponent.prototype.closeAlert = function () {
+        this.hide = true;
     };
     DashboardComponent.ctorParameters = function () { return [
         { type: _vehicle_vehicle_service__WEBPACK_IMPORTED_MODULE_2__["VehicleService"] },
@@ -799,6 +837,51 @@ var DashboardComponent = /** @class */ (function () {
             _angular_common__WEBPACK_IMPORTED_MODULE_10__["DatePipe"]])
     ], DashboardComponent);
     return DashboardComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/login/login.component.css":
+/*!*******************************************!*\
+  !*** ./src/app/login/login.component.css ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2xvZ2luL2xvZ2luLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/login/login.component.ts":
+/*!******************************************!*\
+  !*** ./src/app/login/login.component.ts ***!
+  \******************************************/
+/*! exports provided: LoginComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginComponent", function() { return LoginComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var LoginComponent = /** @class */ (function () {
+    function LoginComponent() {
+    }
+    LoginComponent.prototype.ngOnInit = function () {
+    };
+    LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-login',
+            template: __webpack_require__(/*! raw-loader!./login.component.html */ "./node_modules/raw-loader/index.js!./src/app/login/login.component.html"),
+            styles: [__webpack_require__(/*! ./login.component.css */ "./src/app/login/login.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], LoginComponent);
+    return LoginComponent;
 }());
 
 
@@ -1015,26 +1098,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
+
 
 
 
 var ProductService = /** @class */ (function () {
     function ProductService(http) {
         this.http = http;
-        this.baseUrl = "http://localhost:9090/weighment/api/product";
     }
     ProductService.prototype.getProduct = function (id) {
-        return this.http.get(this.baseUrl + "/" + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].baseUrl + ("/product/" + id));
     };
     ProductService.prototype.createProduct = function (customer) {
         console.log("customer" + JSON.stringify(customer));
-        return this.http.post("" + this.baseUrl, customer);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].baseUrl + "/product", customer);
     };
     ProductService.prototype.updateProduct = function (value) {
-        return this.http.put("" + this.baseUrl, value);
+        return this.http.put(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].baseUrl + "/product", value);
     };
     ProductService.prototype.deleteProduct = function (id) {
-        return this.http.delete(this.baseUrl + "/" + id, {
+        return this.http.delete(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].baseUrl + ("/product/" + id), {
             responseType: "text"
         });
     };
@@ -1286,26 +1370,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
+
 
 
 
 var VehicleService = /** @class */ (function () {
     function VehicleService(http) {
         this.http = http;
-        this.baseUrl = "http://localhost:9090/weighment/api/vehicle";
     }
     VehicleService.prototype.getVehicle = function (id) {
-        return this.http.get(this.baseUrl + "/" + id);
+        return this.http.get(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].baseUrl + ("/vehicle/" + id));
     };
     VehicleService.prototype.createVehicle = function (customer) {
         console.log("customer" + JSON.stringify(customer));
-        return this.http.post("" + this.baseUrl, customer);
+        return this.http.post(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].baseUrl + "/vehicle", customer);
     };
     VehicleService.prototype.updateVehicle = function (value) {
-        return this.http.put("" + this.baseUrl, value);
+        return this.http.put(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].baseUrl + "/vehicle", value);
     };
     VehicleService.prototype.deleteVehicle = function (id) {
-        return this.http.delete(this.baseUrl + "/" + id, {
+        return this.http.delete(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].baseUrl + ("/vehicle/" + id), {
             responseType: "text"
         });
     };
@@ -1359,7 +1444,8 @@ __webpack_require__.r(__webpack_exports__);
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 var environment = {
-    production: false
+    production: false,
+    baseUrl: "http://localhost:9090/weighment/api"
 };
 /*
  * For easier debugging in development mode, you can import the following file
