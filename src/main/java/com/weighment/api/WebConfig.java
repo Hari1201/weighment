@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableWebMvc
 public class WebConfig extends  WebMvcAutoConfiguration {
 
-    @Value("${appName.developmentUrl}")
+   /* @Value("${appName.developmentUrl}")
     private String devUrl;
 
     @Value("${appName.productionUrl}")
@@ -19,7 +19,7 @@ public class WebConfig extends  WebMvcAutoConfiguration {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedMethods("GET", "POST", "PUT", "DELETE").allowedOrigins(devUrl, prodUrl).allowedHeaders("*");
-    }
+    }*/
     
 /*    @Bean
     public InternalResourceViewResolver jspViewResolver() {
