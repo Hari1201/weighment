@@ -1,1 +1,1 @@
-heroku ps:scale web=1
+#web: java $JAVA_OPTS -jar target/*.jar -Dserver.port=$PORT $JAR_OPTS
